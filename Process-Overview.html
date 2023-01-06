@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en-US"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Process Overview</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Process-Overview.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.1.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    
+    
+    
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Beta_v4",
+		"logo": "images/QuordataOrange.png"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Process Overview">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-custom-color-5 u-header u-header" id="sec-1f2c"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="876" data-image-height="299" title="Home">
+          <img src="images/QuordataOrange.png" class="u-logo-image u-logo-image-1">
+        </a>
+        <div class="u-clearfix u-group-elements u-group-elements-1">
+          <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" href="Whitepaper.html"><span class="u-file-icon u-icon u-icon-1"><img src="images/5766916.png" alt=""></span>&nbsp;Whitepaper
+            </a>
+          </p>
+          <p class="u-text u-text-default u-text-2">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-2" href="Team.html"><span class="u-file-icon u-icon u-icon-2"><img src="images/476863.png" alt=""></span>&nbsp;Team
+            </a>
+          </p>
+          <p class="u-text u-text-3">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-3" href="https://twitter.com/QuordataApp" target="_blank"><span class="u-file-icon u-icon u-icon-3"><img src="images/3128310.png" alt=""></span>&nbsp;Follow Us
+            </a>
+          </p>
+          <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-4">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4" href="mailto:hello@quordata.com"><span class="u-file-icon u-icon u-icon-4"><img src="images/4386562.png" alt=""></span>&nbsp;Email Us
+            </a>
+          </p>
+        </div>
+      </div></header>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-1" src="" id="sec-e0ea">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-align-center u-text u-text-default u-title u-text-1"><b>Quordata Process Overview</b>
+        </h1>
+        <p class="u-align-left u-large-text u-text u-text-variant u-text-2"><b>This post is meant to give a high-level overview of the querying and analysis process. For terminology and concepts that are unfamiliar, it is highly recommended the reader performs external research to appreciate the full body of work.</b><b>
+            <br></b>
+        </p>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-2" id="sec-5b6c">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h1 style="text-align: left;">
+            <span class="u-text-body-color">User Query</span>
+          </h1>
+          <p>The Quordata process begins with a simple query input. This input can be anything, but for the purposes of this post we will operate under the assumption that the queries are based on companies. When a query is submitted, the first step is looking through our database of cached results. If we have recently processed this query, the results are simply retrieved from the cache. These results come in a proprietary structure that is then formatted to a clean and readable UI, which will be discussed later.</p>
+          <p>If, however, the query is not cached then the real work starts. Quordata will continue by looking in our NoSQL database and doing a reverse document lookup to find all entries related to the query. This data comes from many different sources. Quordata collects information from Twitter, Reddit, LinkedIn, Wall Street Journal, New York Times, Washington Post, Yahoo Finance, and various other news outlets. These are then consolidated into CSV, JSON, and Parquet files for later processing. Quordata is constantly collecting data, and sometimes a query may have little to no relevant data stored. In these cases, Quordata notes frequently requested queries and queries with little information to ensure priority collection later. This will be explained in further detail in another post.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-3" id="sec-ff80">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h1 style="text-align: left;">
+            <span class="u-text-body-color">Spam Model</span>
+          </h1>
+          <p>With our data consolidated Quordata passes it through to the first model, the spam model. Quordata combines textual data with metadata to evaluate the likelihood of data being spam. Metadata can include followers, retweets, and likes for tweets; upvotes, downvotes, replies, and awards for Reddit posts; and comments and page hits for news articles. Quordata uses this metadata with the text data to look for patterns to predict when something might be considered spam. Spam is not the same as irrelevant data, but rather spam is data that is used for the express purpose of advertising, promotion, is sent by a bot, or otherwise repeating a meaningless message.</p>
+          <p>
+            <br>
+          </p>
+          <p>Unless otherwise stated, all the Quordata machine learning code is written in Python. The spam model utilizes the Tensorflow and HuggingFace libraries. The spam model uses a pretrained BERT model as a base, with transfer learning protocols to train the model to our specific use case. We manually labeled thousands of data points following the above rules to feed into our model. Quordata begins with the pretrained model and then takes in our manually labeled data to generate a model that can accurately predict whether a data point is spam. The model is a binary classification model. That is, our spam model will predict whether an input aligns with one of two classification tags: not spam (ham) or spam. The model actually outputs two values, the probability of a point being each label. If the model is 60% confident that an input is spam, it returns the values 0.6 and (1 - 0.6) = 0.4. That means that the model is 40% confident that the input is ham. Quordata uses what is known as a softmax calculation to choose the appropriate label for an input given the two confidence levels.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-4" id="sec-00b9">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h1 style="text-align: left;">
+            <span class="u-text-body-color">Sentiment Model</span>
+          </h1>
+          <p>Afterwards, the same input data is passed into the sentiment model. This model focuses purely on the textual data, no metadata is used for labeling. Unlike the spam model, the sentiment model is known as a multiclassification model, with three possible labels. These are positive, negative, and neutral. The sentiment model also receives several thousand manually labeled data points for training. First, the model is based on a pretrained SiEBERT model from the HuggingFace library. Quordata again uses transfer learning to fine tune the model. For both the spam and sentiment models, our hyperparameters have been tweaked and continue to be analyzed and tweaked as necessary. As before, the model outputs three values for each label. We use a softmax probability distribution to choose the appropriate label given the confidences of each label.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-5" id="sec-1789">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h1 style="text-align: left;">
+            <span class="u-text-body-color">Biterm Topic Model</span>
+          </h1>
+          <p style="text-align: left; line-height: 2.2;">The last model utilized is the Biterm Topic Model (BTM). This model is meant to generate closely related topics to a given document set. In this case, our document set is all the data collected regarding the initial query. Our document set is passed into the BTM and the output is a collection of phrases that are related to each other given the scope of the document set. Multiple collections of phrases are gathered. For example, a query such as “Apple” may have one collection containing phrases like “ios, macbook, laptop” and another “apple music, itunes, ipod”. Each of these collections of phrases are used to predict prevailing unique topics about the base query. In this case, “Apple” might receive topics like “macbook” and “music”. Quordata returns the top five most relevant topics this way. These topics can then be further utilized for more relevant data querying or further user research.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-6" id="carousel_6388">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h1>
+            <span class="u-text-body-color">Analysis Results</span>
+          </h1>
+          <p style="text-align: left; line-height: 2.2;">Now that our data has been labeled with spam and sentiment models, Quordata is ready to create the analysis results. Various metrics such as average sentiment score, confidence levels, and source counts can be generated with simple arithmetic on the results. The closely related topics are retrieved from the BTM. Quordata can also relate model scores to stock prices and trading volume, assuming the query is business-related. Stock data is received from Yahoo Finance, with backup libraries if necessary. Quordata can make trading suggestions based on past historical performance in relation to the sentiment. Using recent trending information, Quordata can also make predictions based on what may be driving current price and sentiment action. These timeframes are based on the frequency of the data collected and the amount of data available for the given query.</p>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-grey-5 u-section-7" id="carousel_215b">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="fr-view u-clearfix u-rich-text u-text u-text-1">
+          <h1 style="text-align: left;">
+            <span class="u-text-body-color">User Friendly Dashboards</span>
+          </h1>
+          <p style="text-align: left; line-height: 2.2;">Finally, all this data is collected and passed through several different tools to generate user-friendly presentations. Chart.js, HTML, CSS, Python’s Plotly library, and jquery scripts are the main drivers behind the graphical user interface shown on a dashboard. When the GUI is ready, the server sends the results back to the user that initialized the query for their viewing pleasure.</p>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-bc62"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Quordata<br>All rights reserved.
+        </p>
+      </div></footer><span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px" class="u-back-to-top u-icon u-icon-circle u-opacity u-opacity-85 u-palette-1-base u-spacing-15" data-href="#">
+        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+    </span>
+  
+</body></html>
