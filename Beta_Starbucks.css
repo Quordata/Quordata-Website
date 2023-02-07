@@ -3,7 +3,7 @@
 }
 
 .u-section-1 .u-sheet-1 {
-  min-height: 44px;
+  min-height: 81px;
 }
 
 .u-section-1 .u-group-1 {
@@ -26,7 +26,7 @@
   width: 88px;
   min-height: 28px;
   height: auto;
-  margin: -28px auto 8px 13px;
+  margin: -28px auto 0 13px;
 }
 
 .u-section-1 .u-container-layout-2 {
@@ -41,6 +41,43 @@
 .u-section-1 .u-btn-1 {
   background-image: none;
   padding: 0;
+}
+
+.u-section-1 .u-custom-html-1 {
+  height: auto;
+  min-height: 85px;
+  margin: -48px 0 8px 13px;
+}
+
+.u-section-1 .u-btn-2 {
+  width: 100px;
+  height: 28px;
+  margin-top: 58px;
+  position: absolute;
+}
+
+.u-section-1 .u-btn-3 {
+  width: 100px;
+  height: 28px;
+  margin-top: 58px;
+  margin-left: 118px;
+  position: absolute;
+}
+
+.u-section-1 .u-btn-4 {
+  width: 100px;
+  height: 28px;
+  margin-top: 58px;
+  margin-left: 236px;
+  position: absolute;
+}
+
+.u-section-1 .u-btn-5 {
+  width: 100px;
+  height: 28px;
+  margin-top: 58px;
+  margin-left: 354px;
+  position: absolute;
 }
 
 @media (max-width: 1199px) {

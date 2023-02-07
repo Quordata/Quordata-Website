@@ -56,7 +56,7 @@
         </div>
       </div></header>
     <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
-      <div class="u-align-left u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <p class="u-align-center u-text u-text-1">WALMART</p>
@@ -68,6 +68,98 @@
               <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" href="Home.html">BACK</a>
             </p>
           </div>
+        </div>
+        <div class="u-clearfix u-custom-html u-custom-html-1">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-2" value="Day">
+            <p style="margin-top: -8px;"><b style="">Day</b>
+            </p>
+          </button>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-3" value="Week">
+            <p style="margin-top: -8px;"><b style="">Week</b>
+            </p>
+          </button>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-4" value="Month">
+            <p style="margin-top: -8px;"><b style="">Month</b>
+            </p>
+          </button>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Year">
+            <p style="margin-top: -8px;"><b style="">Year</b>
+            </p>
+          </button>
+          <script> function set_timeframe(timeframe) {
+		
+		if (timeframe == "Day") {
+			pos_sent = "70%";
+			tweets_analyzed = "28";
+			conf_score = "91%";
+			ave_score = "70%";
+			time_range = "9/29-9/30"
+		}
+		
+		if (timeframe == "Week") {
+			pos_sent = "79%";
+			tweets_analyzed = "173";
+			conf_score = "83%";
+			ave_score = "80%";
+			time_range = "9/23-9/30"
+		}
+		
+		if (timeframe == "Month") {
+			pos_sent = "50%";
+			tweets_analyzed = "867";
+			conf_score = "81%";
+			ave_score = "80%";
+			time_range = "9/1-9/30"
+		}
+		
+		if (timeframe == "Year") {
+			pos_sent = "64%";
+			tweets_analyzed = "9814";
+			conf_score = "84%";
+			ave_score = "71%";
+			time_range = "9/30/21-9/30/22"
+		}
+		
+		var happening_summarys = document.getElementsByClassName("happening_summary");
+		var happening_summary = happening_summarys[0];
+		
+		happening_summary.innerHTML = `<span style=\"font-weight: 700;\">Amazon</span>&nbsp;has been experiencing <span style=\"font-weight: 700;\">positive </span>sentiment the past <span style=\"font-weight: 700;\">${timeframe.toLowerCase()} </span>with an average sentiment score of <span style=\"font-weight: 700;\"> ${ave_score}</span><span style=\"font-weight: 700;\">%</span>`;
+		
+		var positive_scores = document.getElementsByClassName("positive_score");
+		var positive_score = positive_scores[0];
+		
+		positive_score.innerHTML = `<b>${pos_sent}</b>`;
+		
+		var confidence_scores = document.getElementsByClassName("confidence_score");
+		var confidence_score = confidence_scores[0];
+		
+		confidence_score.innerHTML = `<b>${conf_score}</b>`;
+		
+		var tweet_counts = document.getElementsByClassName("tweet_count");
+		var tweet_count = tweet_counts[0];
+		
+		tweet_count.innerHTML = `<b>${tweets_analyzed}</b>`;
+		
+		var average_scores = document.getElementsByClassName("average_score");
+		var average_score = average_scores[0];
+		
+		average_score.innerHTML = `<b>${ave_score}</b>`;
+		
+		var sentiment_over_times = document.getElementsByClassName("sentiment_over_time");
+		var sentiment_over_time = sentiment_over_times[0];
+		
+		sentiment_over_time.innerHTML = `<b>SENTIMENT OVER TIME (${time_range})</b>`;
+		
+		var insight_summarys = document.getElementsByClassName("insight_summary");
+		var insight_summary = insight_summarys[0];
+		
+		insight_summary.innerHTML = `Quordata notes <span style="font-weight: 700;">Amazon </span>stock has been trading in a <span style="font-weight: 700;">negative </span>trend the <span style="font-weight: 700;">previous ${timeframe.toLowerCase()}</span>.`;
+		
+		var insight_predictions = document.getElementsByClassName("insight_prediction");
+		var insight_prediction = insight_predictions[0];
+		
+		insight_prediction.innerHTML = `<b>Quordata has seen that when the 1-${timeframe.toLowerCase()} sentiment score is positive, price tends to rise the following ${timeframe.toLowerCase()} by 1-5%.</b>`;
+	} </script>
         </div>
       </div>
     </section>
@@ -188,14 +280,14 @@
                   <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-17">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-23">CLOSELY RELATED TOPICS</p>
-                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/WalmartCloselyRelatedTopicsGraph_New-86.png" data-image-width="700" data-image-height="500" data-href="files/WalmartCloselyRelatedTopicsGraph_New.png" data-target="_blank">
+                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/WalmartCloselyRelatedTopicsGraph_New-85.png" data-image-width="700" data-image-height="500" data-href="files/WalmartCloselyRelatedTopicsGraph_New.png" data-target="_blank">
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-26 u-white u-layout-cell-9">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-18">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-24">SOURCES TREEMAP<br>
                       </p>
-                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/WalmartSourceTreemap_ChartJS-85.png" data-image-width="700" data-image-height="500" data-href="files/WalmartSourceTreemap_ChartJS.png" data-target="_blank">
+                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/WalmartSourceTreemap_ChartJS-86.png" data-image-width="700" data-image-height="500" data-href="files/WalmartSourceTreemap_ChartJS.png" data-target="_blank">
                     </div>
                   </div>
                 </div>
