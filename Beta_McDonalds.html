@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="Beta_McDonalds.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.4.4, nicepage.com">
+    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script> window.onload=function(){
@@ -57,73 +57,147 @@
       </div></header>
     <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
       <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-custom-html u-custom-html-1">
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-1" value="1">
+            <p style="margin-top: -7px;"><b style="">Twitter</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_reddit" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-2" value="1">
+            <p style="margin-top: -7px;"><b style="">Reddit</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_youtube" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-3" value="1">
+            <p style="margin-top: -7px;"><b style="">YouTube</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_news" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-4" value="1">
+            <p style="margin-top: -7px;"><b style="">News</b>
+            </p>
+          </button>
+          <script> function toggle_source(source) {
+		
+		target = document.getElementById(source);
+		
+		twitter_pos_sent = 85;
+		twitter_conf_score = 94;
+		twitter_ave_score = 80;
+		
+		reddit_pos_sent = 70;
+		reddit_conf_score = 83;
+		reddit_ave_score = 61;
+		
+		youtube_pos_sent = 62;
+		youtube_conf_score = 89;
+		youtube_ave_score = 66;
+		news_pos_sent = 72;
+		news_conf_score = 79;
+		news_ave_score = 76;
+		
+		if (target.value == "1") {
+			target.value = "0";
+			target.style.background = "#898989";
+		} else {
+			target.value = "1";
+			target.style.background = "#f1c50e";
+		}
+		
+		twitter_source_state = parseInt(document.getElementById("toggle_twitter").value);
+		reddit_source_state = parseInt(document.getElementById("toggle_reddit").value);
+		youtube_source_state = parseInt(document.getElementById("toggle_youtube").value);
+		news_source_state = parseInt(document.getElementById("toggle_news").value);
+		
+		num_on = twitter_source_state + reddit_source_state + youtube_source_state + news_source_state;
+		
+		if (num_on < 4) {
+			pos_sent = `${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
+			conf_score = `${Math.round((twitter_conf_score*twitter_source_state + reddit_conf_score*reddit_source_state + youtube_conf_score*youtube_source_state + news_conf_score*news_source_state) / num_on)}%`;
+			ave_score = `${Math.round((twitter_ave_score*twitter_source_state + reddit_ave_score*reddit_source_state + youtube_ave_score*youtube_source_state + news_ave_score*news_source_state) / num_on)}%`;
+		} else if (num_on == 0) {
+			pos_sent = "NaN";
+			conf_score = "NaN";
+			ave_score = "NaN";
+		} else {
+			pos_sent = "72%";
+			conf_score = "79%";
+			ave_score = "76%";
+		}
+		
+		var positive_scores = document.getElementsByClassName("positive_score");
+		var positive_score = positive_scores[0];
+		
+		positive_score.innerHTML = `<b>${pos_sent}</b>`;
+		
+		var confidence_scores = document.getElementsByClassName("confidence_score");
+		var confidence_score = confidence_scores[0];
+		
+		confidence_score.innerHTML = `<b>${conf_score}</b>`;
+		
+		var average_scores = document.getElementsByClassName("average_score");
+		var average_score = average_scores[0];
+		
+		average_score.innerHTML = `<b>${ave_score}</b>`;
+	} </script>
+        </div>
         <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <p class="u-align-center u-text u-text-1">MCDONALDS</p>
           </div>
         </div>
-        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
-          <div class="u-container-layout u-container-layout-2">
-            <p class="u-align-center u-text u-text-2">
-              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" href="Home.html">BACK</a>
-            </p>
-          </div>
-        </div>
-        <div class="u-clearfix u-custom-html u-custom-html-1">
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-2" value="Day">
-            <p style="margin-top: -8px;"><b style="">Day</b>
+        <div class="u-clearfix u-custom-html u-custom-html-2">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Day">
+            <p style="margin-top: -7px;"><b style="">Day</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-3" value="Week">
-            <p style="margin-top: -8px;"><b style="">Week</b>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-6" value="Week">
+            <p style="margin-top: -7px;"><b style="">Week</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-4" value="Month">
-            <p style="margin-top: -8px;"><b style="">Month</b>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-7" value="Month">
+            <p style="margin-top: -7px;"><b style="">Month</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Year">
-            <p style="margin-top: -8px;"><b style="">Year</b>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-8" value="Year">
+            <p style="margin-top: -7px;"><b style="">Year</b>
             </p>
           </button>
           <script> function set_timeframe(timeframe) {
 		
 		if (timeframe == "Day") {
-			pos_sent = "70%";
-			tweets_analyzed = "28";
-			conf_score = "91%";
-			ave_score = "70%";
+			pos_sent = "85%";
+			tweets_analyzed = "52";
+			conf_score = "94%";
+			ave_score = "80%";
 			time_range = "9/29-9/30"
 		}
 		
 		if (timeframe == "Week") {
-			pos_sent = "79%";
-			tweets_analyzed = "173";
+			pos_sent = "70%";
+			tweets_analyzed = "310";
 			conf_score = "83%";
-			ave_score = "80%";
+			ave_score = "61%";
 			time_range = "9/23-9/30"
 		}
 		
 		if (timeframe == "Month") {
-			pos_sent = "50%";
-			tweets_analyzed = "867";
+			pos_sent = "35%";
+			tweets_analyzed = "1,526";
 			conf_score = "81%";
-			ave_score = "80%";
+			ave_score = "55%";
 			time_range = "9/1-9/30"
 		}
 		
 		if (timeframe == "Year") {
-			pos_sent = "64%";
-			tweets_analyzed = "9814";
-			conf_score = "84%";
-			ave_score = "71%";
+			pos_sent = "72%";
+			tweets_analyzed = "17,283";
+			conf_score = "79%";
+			ave_score = "76%";
 			time_range = "9/30/21-9/30/22"
 		}
 		
 		var happening_summarys = document.getElementsByClassName("happening_summary");
 		var happening_summary = happening_summarys[0];
 		
-		happening_summary.innerHTML = `<span style=\"font-weight: 700;\">Amazon</span>&nbsp;has been experiencing <span style=\"font-weight: 700;\">positive </span>sentiment the past <span style=\"font-weight: 700;\">${timeframe.toLowerCase()} </span>with an average sentiment score of <span style=\"font-weight: 700;\"> ${ave_score}</span><span style=\"font-weight: 700;\">%</span>`;
+		happening_summary.innerHTML = `<span style=\"font-weight: 700;\">McDonalds</span>&nbsp;has been experiencing <span style=\"font-weight: 700;\">positive </span>sentiment the past <span style=\"font-weight: 700;\">${timeframe.toLowerCase()} </span>with an average sentiment score of <span style=\"font-weight: 700;\"> ${ave_score}</span><span style=\"font-weight: 700;\"></span>`;
 		
 		var positive_scores = document.getElementsByClassName("positive_score");
 		var positive_score = positive_scores[0];
@@ -153,13 +227,20 @@
 		var insight_summarys = document.getElementsByClassName("insight_summary");
 		var insight_summary = insight_summarys[0];
 		
-		insight_summary.innerHTML = `Quordata notes <span style="font-weight: 700;">Amazon </span>stock has been trading in a <span style="font-weight: 700;">negative </span>trend the <span style="font-weight: 700;">previous ${timeframe.toLowerCase()}</span>.`;
+		insight_summary.innerHTML = `Quordata notes McDonalds stock has been trading in an extreme negative downtrend the last ${timeframe.toLowerCase()}.`;
 		
 		var insight_predictions = document.getElementsByClassName("insight_prediction");
 		var insight_prediction = insight_predictions[0];
 		
 		insight_prediction.innerHTML = `<b>Quordata has seen that when the 1-${timeframe.toLowerCase()} sentiment score is positive, price tends to rise the following ${timeframe.toLowerCase()} by 1-5%.</b>`;
 	} </script>
+        </div>
+        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <p class="u-align-center u-text u-text-2">
+              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-9" href="Home.html">BACK</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -184,7 +265,7 @@
                       <img class="u-image u-image-round u-preserve-proportions u-radius-21 u-image-1" src="https://www.zdnet.com/a/img/resize/36a842b85e733160ba37766c7ef39b10dec04e5a/2021/06/03/0616eb9e-af72-4f9e-b4be-2d76408d442b/screen-shot-2021-06-02-at-8-44-43-pm.png?auto=webp&amp;fit=crop&amp;height=900&amp;width=1200" alt="" data-image-width="1200" data-image-height="900">
                       <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-1">
                         <div class="u-container-layout u-valign-top-xs u-container-layout-3">
-                          <p class="u-text u-text-body-color u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-5">
+                          <p class="happening_summary u-text u-text-body-color u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-5">
                             <span style="font-weight: 700;">McDonald's</span> has been experiencing <span style="font-weight: 700;">positive </span>sentiment the past <span style="font-weight: 700;">month </span>with an average sentiment score of <span style="font-weight: 700;"> 55</span>
                             <span style="font-weight: 700;">%</span>
                           </p><span class="u-file-icon u-icon u-icon-4"><img src="images/5231421.png" alt=""></span>
@@ -215,26 +296,26 @@
                       <h1 class="u-text u-text-custom-color-5 u-text-default u-title u-text-10">KEY METRICS</h1>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-4">
                         <div class="u-container-layout u-container-layout-7">
-                          <p class="u-align-left u-text u-text-body-color u-text-11">1,526</p><span class="u-file-icon u-icon u-text-palette-4-base u-icon-7"><img src="images/64673-cadf79d1.png" alt=""></span>
+                          <p class="tweet_count u-align-left u-text u-text-body-color u-text-11">1,526</p><span class="u-file-icon u-icon u-text-palette-4-base u-icon-7"><img src="images/64673-cadf79d1.png" alt=""></span>
                           <p class="u-align-left u-text u-text-body-color u-text-12">Tweets&nbsp;<br>Analyzed
                           </p>
                         </div>
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-5">
                         <div class="u-container-layout u-container-layout-8">
-                          <p class="u-align-left u-text u-text-body-color u-text-13">35%</p><span class="u-file-icon u-icon u-icon-8"><img src="images/3588171.png" alt=""></span>
+                          <p class="positive_score u-align-left u-text u-text-body-color u-text-13">35%</p><span class="u-file-icon u-icon u-icon-8"><img src="images/3588171.png" alt=""></span>
                           <p class="u-align-left u-text u-text-body-color u-text-14">Positive​ Social Sentiment</p>
                         </div>
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-6">
                         <div class="u-container-layout u-container-layout-9"><span class="u-file-icon u-icon u-icon-9"><img src="images/456115.png" alt=""></span>
-                          <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-text u-text-body-color u-text-15">81%</p>
+                          <p class="confidence_score u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-text u-text-body-color u-text-15">81%</p>
                           <p class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-text u-text-body-color u-text-16">Confident in Sentiment Score</p>
                         </div>
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-7">
                         <div class="u-container-layout u-container-layout-10">
-                          <p class="u-align-left u-text u-text-body-color u-text-17">55%</p><span class="u-file-icon u-icon u-icon-10"><img src="images/5184373.png" alt=""></span>
+                          <p class="average_score u-align-left u-text u-text-body-color u-text-17">55%</p><span class="u-file-icon u-icon u-icon-10"><img src="images/5184373.png" alt=""></span>
                           <p class="u-align-left u-text u-text-body-color u-text-18">Average Sentiment Score</p>
                         </div>
                       </div>
@@ -252,19 +333,19 @@
                       <h1 class="u-align-center u-text u-text-custom-color-5 u-text-default u-title u-text-19">OUR INSIGHTS</h1>
                       <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-8">
                         <div class="u-container-layout u-container-layout-13"><span class="u-file-icon u-icon u-icon-11"><img src="images/4730727.png" alt=""></span>
-                          <p class="u-text u-text-body-color u-text-20"> Quordata notes&nbsp;​McDonalds stock has been trading in an extreme negative downtrend the last month.</p>
+                          <p class="insight_summary u-text u-text-body-color u-text-20"> Quordata notes&nbsp;​McDonalds stock has been trading in an extreme negative downtrend the last month.</p>
                         </div>
                       </div>
                       <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-9">
                         <div class="u-container-layout u-container-layout-14"><span class="u-file-icon u-icon u-icon-12"><img src="images/4175914.png" alt=""></span>
-                          <p class="u-text u-text-body-color u-text-default u-text-21">Quordata has seen that when the 1-month sentiment score is positive, price tends to rise the following month by 1-5%.&nbsp;</p>
+                          <p class="insight_prediction u-text u-text-body-color u-text-default u-text-21">Quordata has seen that when the 1-month sentiment score is positive, price tends to rise the following month by 1-5%.&nbsp;</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-37 u-white u-layout-cell-6">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-15">
-                      <p class="u-text u-text-custom-color-5 u-text-default u-text-22">SENTIMENT OVER TIME (9/1-9/30)</p>
+                      <p class="sentiment_over_time u-text u-text-custom-color-5 u-text-default u-text-22">SENTIMENT OVER TIME (9/1-9/30)</p>
                       <div class="u-clearfix u-custom-html u-custom-html-1">
                         <div id="sentiment-price-chart"></div>
                       </div>
@@ -280,14 +361,14 @@
                   <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-17">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-23">CLOSELY RELATED TOPICS</p>
-                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/McDonald_sCloselyRelatedTopicsGraph_New-58.png" data-image-width="700" data-image-height="500" data-href="files/McDonald_sCloselyRelatedTopicsGraph_New.png" data-target="_blank">
+                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/McDonald_sCloselyRelatedTopicsGraph_New-65.png" data-image-width="700" data-image-height="500" data-href="files/McDonald_sCloselyRelatedTopicsGraph_New.png" data-target="_blank">
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-26 u-white u-layout-cell-9">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-18">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-24">SOURCES TREEMAP<br>
                       </p>
-                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/McDonaldsSourceTreemap_ChartJS-59.png" data-image-width="700" data-image-height="500" data-href="files/McDonaldsSourceTreemap_ChartJS.png" data-target="_blank">
+                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/McDonaldsSourceTreemap_ChartJS-66.png" data-image-width="700" data-image-height="500" data-href="files/McDonaldsSourceTreemap_ChartJS.png" data-target="_blank">
                     </div>
                   </div>
                 </div>

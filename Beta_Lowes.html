@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="Beta_Lowes.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.4.4, nicepage.com">
+    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script> window.onload=function(){
@@ -57,64 +57,139 @@
       </div></header>
     <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
       <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-custom-html u-custom-html-1">
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-1" value="1">
+            <p style="margin-top: -7px;"><b style="">Twitter</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_reddit" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-2" value="1">
+            <p style="margin-top: -7px;"><b style="">Reddit</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_youtube" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-3" value="1">
+            <p style="margin-top: -7px;"><b style="">YouTube</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_news" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-4" value="1">
+            <p style="margin-top: -7px;"><b style="">News</b>
+            </p>
+          </button>
+          <script> function toggle_source(source) {
+		
+		target = document.getElementById(source);
+		
+		twitter_pos_sent = 80;
+		twitter_conf_score = 89;
+		twitter_ave_score = 80;
+		
+		reddit_pos_sent = 79;
+		reddit_conf_score = 86;
+		reddit_ave_score = 80;
+		
+		youtube_pos_sent = 56;
+		youtube_conf_score = 84;
+		youtube_ave_score = 71;
+		
+		news_pos_sent = 58;
+		news_conf_score = 84;
+		news_ave_score = 71;
+		
+		if (target.value == "1") {
+			target.value = "0";
+			target.style.background = "#898989";
+		} else {
+			target.value = "1";
+			target.style.background = "#f1c50e";
+		}
+		
+		twitter_source_state = parseInt(document.getElementById("toggle_twitter").value);
+		reddit_source_state = parseInt(document.getElementById("toggle_reddit").value);
+		youtube_source_state = parseInt(document.getElementById("toggle_youtube").value);
+		news_source_state = parseInt(document.getElementById("toggle_news").value);
+		
+		num_on = twitter_source_state + reddit_source_state + youtube_source_state + news_source_state;
+		
+		if (num_on < 4) {
+			pos_sent = `${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
+			conf_score = `${Math.round((twitter_conf_score*twitter_source_state + reddit_conf_score*reddit_source_state + youtube_conf_score*youtube_source_state + news_conf_score*news_source_state) / num_on)}%`;
+			ave_score = `${Math.round((twitter_ave_score*twitter_source_state + reddit_ave_score*reddit_source_state + youtube_ave_score*youtube_source_state + news_ave_score*news_source_state) / num_on)}%`;
+		} else if (num_on == 0) {
+			pos_sent = "NaN";
+			conf_score = "NaN";
+			ave_score = "NaN";
+		} else {
+			pos_sent = "46%";
+			conf_score = "81%";
+			ave_score = "58%";
+		}
+		
+		var positive_scores = document.getElementsByClassName("positive_score");
+		var positive_score = positive_scores[0];
+		
+		positive_score.innerHTML = `<b>${pos_sent}</b>`;
+		
+		var confidence_scores = document.getElementsByClassName("confidence_score");
+		var confidence_score = confidence_scores[0];
+		
+		confidence_score.innerHTML = `<b>${conf_score}</b>`;
+		
+		var average_scores = document.getElementsByClassName("average_score");
+		var average_score = average_scores[0];
+		
+		average_score.innerHTML = `<b>${ave_score}</b>`;
+	} </script>
+        </div>
         <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <p class="u-align-center u-text u-text-1">LOWES</p>
           </div>
         </div>
-        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
-          <div class="u-container-layout u-container-layout-2">
-            <p class="u-align-center u-text u-text-2">
-              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" href="Home.html">BACK</a>
-            </p>
-          </div>
-        </div>
-        <div class="u-clearfix u-custom-html u-custom-html-1">
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-2" value="Day">
-            <p style="margin-top: -8px;"><b style="">Day</b>
+        <div class="u-clearfix u-custom-html u-custom-html-2">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Day">
+            <p style="margin-top: -7px;"><b style="">Day</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-3" value="Week">
-            <p style="margin-top: -8px;"><b style="">Week</b>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-6" value="Week">
+            <p style="margin-top: -7px;"><b style="">Week</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-4" value="Month">
-            <p style="margin-top: -8px;"><b style="">Month</b>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-7" value="Month">
+            <p style="margin-top: -7px;"><b style="">Month</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Year">
-            <p style="margin-top: -8px;"><b style="">Year</b>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-8" value="Year">
+            <p style="margin-top: -7px;"><b style="">Year</b>
             </p>
           </button>
           <script> function set_timeframe(timeframe) {
 		
 		if (timeframe == "Day") {
-			pos_sent = "70%";
-			tweets_analyzed = "28";
-			conf_score = "91%";
-			ave_score = "70%";
+			pos_sent = "80%";
+			tweets_analyzed = "46";
+			conf_score = "89%";
+			ave_score = "80%";
 			time_range = "9/29-9/30"
 		}
 		
 		if (timeframe == "Week") {
 			pos_sent = "79%";
-			tweets_analyzed = "173";
-			conf_score = "83%";
+			tweets_analyzed = "279";
+			conf_score = "86%";
 			ave_score = "80%";
 			time_range = "9/23-9/30"
 		}
 		
 		if (timeframe == "Month") {
-			pos_sent = "50%";
-			tweets_analyzed = "867";
+			pos_sent = "46%";
+			tweets_analyzed = "1,400";
 			conf_score = "81%";
-			ave_score = "80%";
+			ave_score = "58%";
 			time_range = "9/1-9/30"
 		}
 		
 		if (timeframe == "Year") {
-			pos_sent = "64%";
-			tweets_analyzed = "9814";
+			pos_sent = "58%";
+			tweets_analyzed = "14,911";
 			conf_score = "84%";
 			ave_score = "71%";
 			time_range = "9/30/21-9/30/22"
@@ -123,7 +198,7 @@
 		var happening_summarys = document.getElementsByClassName("happening_summary");
 		var happening_summary = happening_summarys[0];
 		
-		happening_summary.innerHTML = `<span style=\"font-weight: 700;\">Amazon</span>&nbsp;has been experiencing <span style=\"font-weight: 700;\">positive </span>sentiment the past <span style=\"font-weight: 700;\">${timeframe.toLowerCase()} </span>with an average sentiment score of <span style=\"font-weight: 700;\"> ${ave_score}</span><span style=\"font-weight: 700;\">%</span>`;
+		happening_summary.innerHTML = `<span style=\"font-weight: 700;\">Lowes</span>&nbsp;has been experiencing <span style=\"font-weight: 700;\">positive </span>sentiment the past <span style=\"font-weight: 700;\">${timeframe.toLowerCase()} </span>with an average sentiment score of <span style=\"font-weight: 700;\"> ${ave_score}</span><span style=\"font-weight: 700;\"></span>`;
 		
 		var positive_scores = document.getElementsByClassName("positive_score");
 		var positive_score = positive_scores[0];
@@ -153,13 +228,20 @@
 		var insight_summarys = document.getElementsByClassName("insight_summary");
 		var insight_summary = insight_summarys[0];
 		
-		insight_summary.innerHTML = `Quordata notes <span style="font-weight: 700;">Amazon </span>stock has been trading in a <span style="font-weight: 700;">negative </span>trend the <span style="font-weight: 700;">previous ${timeframe.toLowerCase()}</span>.`;
+		insight_summary.innerHTML = `Quordata notes <span style="font-weight: 700;">Lowes </span>stock has been <span style="font-weight: 700;">trading in a range the last ${timeframe.toLowerCase()}</span>.`;
 		
 		var insight_predictions = document.getElementsByClassName("insight_prediction");
 		var insight_prediction = insight_predictions[0];
 		
 		insight_prediction.innerHTML = `<b>Quordata has seen that when the 1-${timeframe.toLowerCase()} sentiment score is positive, price tends to rise the following ${timeframe.toLowerCase()} by 1-5%.</b>`;
 	} </script>
+        </div>
+        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <p class="u-align-center u-text u-text-2">
+              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-9" href="Home.html">BACK</a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -283,14 +365,14 @@
                   <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-17">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-23">CLOSELY RELATED TOPICS</p>
-                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/Lowe_sCloselyRelatedTopicsGraph_New-80.png" data-image-width="700" data-image-height="500" data-href="files/Lowe_sCloselyRelatedTopicsGraph_New.png" data-target="_blank">
+                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/Lowe_sCloselyRelatedTopicsGraph_New-86.png" data-image-width="700" data-image-height="500" data-href="files/Lowe_sCloselyRelatedTopicsGraph_New.png" data-target="_blank">
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-26 u-white u-layout-cell-9">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-18">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-24">SOURCES TREEMAP<br>
                       </p>
-                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/LowesSourceTreemap_ChartJS-81.png" data-image-width="700" data-image-height="500" data-href="files/LowesSourceTreemap_ChartJS.png" data-target="_blank">
+                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/LowesSourceTreemap_ChartJS-85.png" data-image-width="700" data-image-height="500" data-href="files/LowesSourceTreemap_ChartJS.png" data-target="_blank">
                     </div>
                   </div>
                 </div>
