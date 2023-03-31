@@ -24,7 +24,7 @@
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
-		"name": "Beta_LIVE Feb 24",
+		"name": "Beta",
 		"logo": "images/QuordataOrange.png"
 }</script>
     <meta name="theme-color" content="#478ac9">
@@ -79,18 +79,19 @@
 		
 		target = document.getElementById(source);
 		
-		twitter_pos_sent = 70;
+		twitter_pos_sent = 8;
 		twitter_conf_score = 91;
 		twitter_ave_score = 70;
 		
-		reddit_pos_sent = 79;
+		reddit_pos_sent = 3;
 		reddit_conf_score = 83;
 		reddit_ave_score = 80;
 		
-		youtube_pos_sent = 60;
+		youtube_pos_sent = 3;
 		youtube_conf_score = 71;
 		youtube_ave_score = 70;
-		news_pos_sent = 64;
+		
+		news_pos_sent = 5;
 		news_conf_score = 84;
 		news_ave_score = 71;
 		
@@ -110,7 +111,7 @@
 		num_on = twitter_source_state + reddit_source_state + youtube_source_state + news_source_state;
 		
 		if (num_on < 4) {
-			pos_sent = `${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
+			pos_sent = `+${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
 			conf_score = `${Math.round((twitter_conf_score*twitter_source_state + reddit_conf_score*reddit_source_state + youtube_conf_score*youtube_source_state + news_conf_score*news_source_state) / num_on)}%`;
 			ave_score = `${Math.round((twitter_ave_score*twitter_source_state + reddit_ave_score*reddit_source_state + youtube_ave_score*youtube_source_state + news_ave_score*news_source_state) / num_on)}%`;
 		} else if (num_on == 0) {
@@ -118,7 +119,7 @@
 			conf_score = "NaN";
 			ave_score = "NaN";
 		} else {
-			pos_sent = "50%";
+			pos_sent = "+5%";
 			conf_score = "81%";
 			ave_score = "80%";
 		}
@@ -164,7 +165,7 @@
           <script> function set_timeframe(timeframe) {
 		
 		if (timeframe == "Day") {
-			pos_sent = "70%";
+			pos_sent = "-7%";
 			tweets_analyzed = "28";
 			conf_score = "91%";
 			ave_score = "70%";
@@ -172,7 +173,7 @@
 		}
 		
 		if (timeframe == "Week") {
-			pos_sent = "79%";
+			pos_sent = "-2%";
 			tweets_analyzed = "173";
 			conf_score = "83%";
 			ave_score = "80%";
@@ -180,7 +181,7 @@
 		}
 		
 		if (timeframe == "Month") {
-			pos_sent = "50%";
+			pos_sent = "+5%";
 			tweets_analyzed = "867";
 			conf_score = "81%";
 			ave_score = "80%";
@@ -188,7 +189,7 @@
 		}
 		
 		if (timeframe == "Year") {
-			pos_sent = "64%";
+			pos_sent = "+11%";
 			tweets_analyzed = "9,814";
 			conf_score = "84%";
 			ave_score = "71%";
@@ -304,8 +305,8 @@
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-5">
                         <div class="u-container-layout u-container-layout-8">
-                          <p class="positive_score u-align-left u-text u-text-body-color u-text-13">50%</p><span class="u-file-icon u-icon u-icon-8"><img src="images/3588171.png" alt=""></span>
-                          <p class="u-align-left u-text u-text-body-color u-text-14">Positive​ Social Sentiment</p>
+                          <p class="positive_score u-align-left u-text u-text-13">+5%</p><span class="u-file-icon u-icon u-icon-8"><img src="images/3588171.png" alt=""></span>
+                          <p class="u-align-left u-text u-text-body-color u-text-14">Change Over Time</p>
                         </div>
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-6">

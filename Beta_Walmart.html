@@ -24,7 +24,7 @@
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
-		"name": "Beta_LIVE Feb 24",
+		"name": "Beta",
 		"logo": "images/QuordataOrange.png"
 }</script>
     <meta name="theme-color" content="#478ac9">
@@ -79,18 +79,19 @@
 		
 		target = document.getElementById(source);
 		
-		twitter_pos_sent = 80;
+		twitter_pos_sent = 5;
 		twitter_conf_score = 92;
 		twitter_ave_score = 81;
 		
-		reddit_pos_sent = 86;
+		reddit_pos_sent = 2;
 		reddit_conf_score = 91;
 		reddit_ave_score = 80;
 		
-		youtube_pos_sent = 60;
+		youtube_pos_sent = 2;
 		youtube_conf_score = 71;
 		youtube_ave_score = 70;
-		news_pos_sent = 72;
+		
+		news_pos_sent = 2;
 		news_conf_score = 82;
 		news_ave_score = 77;
 		
@@ -118,7 +119,7 @@
 			conf_score = "NaN";
 			ave_score = "NaN";
 		} else {
-			pos_sent = "50%";
+			pos_sent = "+3%";
 			conf_score = "81%";
 			ave_score = "80%";
 		}
@@ -164,7 +165,7 @@
           <script> function set_timeframe(timeframe) {
 		
 		if (timeframe == "Day") {
-			pos_sent = "80%";
+			pos_sent = "-1%";
 			tweets_analyzed = "33";
 			conf_score = "92%";
 			ave_score = "81%";
@@ -172,7 +173,7 @@
 		}
 		
 		if (timeframe == "Week") {
-			pos_sent = "86%";
+			pos_sent = "+2%";
 			tweets_analyzed = "213";
 			conf_score = "91%";
 			ave_score = "80%";
@@ -180,7 +181,7 @@
 		}
 		
 		if (timeframe == "Month") {
-			pos_sent = "50%";
+			pos_sent = "+3%";
 			tweets_analyzed = "1,056";
 			conf_score = "81%";
 			ave_score = "80%";
@@ -188,7 +189,7 @@
 		}
 		
 		if (timeframe == "Year") {
-			pos_sent = "72%";
+			pos_sent = "-12%";
 			tweets_analyzed = "11,974";
 			conf_score = "82%";
 			ave_score = "77%";
@@ -304,8 +305,8 @@
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-5">
                         <div class="u-container-layout u-container-layout-8">
-                          <p class="positive_score u-align-left u-text u-text-body-color u-text-13">44%</p><span class="u-file-icon u-icon u-icon-8"><img src="images/3588171.png" alt=""></span>
-                          <p class="u-align-left u-text u-text-body-color u-text-14">Positive​ Social Sentiment</p>
+                          <p class="positive_score u-align-left u-text u-text-body-color u-text-13">+3</p><span class="u-file-icon u-icon u-icon-8"><img src="images/3588171.png" alt=""></span>
+                          <p class="u-align-left u-text u-text-body-color u-text-14"> Change Over Time</p>
                         </div>
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-6">
@@ -362,14 +363,14 @@
                   <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-17">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-23">CLOSELY RELATED TOPICS</p>
-                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/WalmartCloselyRelatedTopicsGraph_New.png" data-image-width="700" data-image-height="500" data-href="files/WalmartCloselyRelatedTopicsGraph_New-92.png" data-target="_blank">
+                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/WalmartCloselyRelatedTopicsGraph_New.png" data-image-width="700" data-image-height="500" data-href="files/WalmartCloselyRelatedTopicsGraph_New-93.png" data-target="_blank">
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-26 u-white u-layout-cell-9">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-18">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-24">SOURCES TREEMAP<br>
                       </p>
-                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/WalmartSourceTreemap_ChartJS-94.png" data-image-width="700" data-image-height="500" data-href="files/WalmartSourceTreemap_ChartJS.png" data-target="_blank">
+                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/WalmartSourceTreemap_ChartJS.png" data-image-width="700" data-image-height="500" data-href="files/WalmartSourceTreemap_ChartJS-94.png" data-target="_blank">
                     </div>
                   </div>
                 </div>
