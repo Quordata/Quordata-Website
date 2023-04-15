@@ -5,3 +5,16 @@
 .u-section-1 .u-image-1 {
   width: 883px;
 }
+
+@media (max-width: 575px) {
+  .u-section-1 .u-image-1 {
+    height: 192px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    top: auto;
+  }
+}

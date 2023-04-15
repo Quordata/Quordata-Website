@@ -70,7 +70,6 @@
     margin-top: 20px;
     margin-right: 410px;
     margin-left: 0;
-    margin-bottom: initial;
   }
 }
 
@@ -81,7 +80,6 @@
 
   .u-section-2 .u-text-1 {
     margin-right: 190px;
-    margin-bottom: 60px;
   }
 }
 
@@ -260,17 +258,12 @@
 
   .u-section-5 .u-image-1 {
     margin-top: 20px;
-    margin-bottom: initial;
   }
 }
 
 @media (max-width: 991px) {
   .u-section-5 .u-text-1 {
     margin-left: 196px;
-  }
-
-  .u-section-5 .u-image-1 {
-    margin-bottom: 87px;
   }
 }
 
@@ -333,17 +326,12 @@
 
   .u-section-6 .u-image-1 {
     margin-top: 20px;
-    margin-bottom: initial;
   }
 }
 
 @media (max-width: 991px) {
   .u-section-6 .u-text-1 {
     margin-right: 180px;
-  }
-
-  .u-section-6 .u-image-1 {
-    margin-bottom: 124px;
   }
 }
 

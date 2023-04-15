@@ -187,6 +187,15 @@
 }
 
 @media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1502px;
+  }
+
+  .u-section-1 .u-text-1 {
+    width: 151px;
+    margin-top: 40px;
+  }
+
   .u-section-1 .u-image-1 {
     height: 218px;
   }
