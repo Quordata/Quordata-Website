@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="Beta_Salesforce.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
+    <meta name="generator" content="Nicepage 5.9.6, nicepage.com">
     <meta name="referrer" content="origin">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -163,6 +163,33 @@
             <p style="margin-top: -7px;"><b style="">Year</b>
             </p>
           </button>
+          <label for="start-date" style="width: 100px; height: 28px; margin-top: 58px; margin-left: 475px; position: absolute">Start Date:</label>
+          <input type="date" id="start-date" name="start-date" style="width: 160px; height: 28px; margin-top: 58px; margin-left: 570px; position: absolute">
+          <label for="end-date" style="width: 100px; height: 28px; margin-top: 58px; margin-left: 750px; position: absolute">End Date:</label>
+          <input type="date" id="end-date" name="end-date" style="width: 160px; height: 28px; margin-top: 58px; margin-left: 845px; position: absolute" disabled="">
+          <script> // get references to the start date and end date input fields
+  const startDateInput = document.getElementById('start-date');
+  const endDateInput = document.getElementById('end-date');
+  // add an event listener to the start date input field
+  startDateInput.addEventListener('change', function() {
+    // when the start date is changed, enable the end date input field
+    endDateInput.disabled = false;
+    // set the minimum value for the end date input field to the selected start date
+    endDateInput.min = startDateInput.value;
+	  
+  });
+  // add an event listener to the end date input field
+  endDateInput.addEventListener('change', function() {
+    // parse the start date and end date values into Date objects
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+    // format the start date and end date using the desired format
+    const formattedStartDate = startDate.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: '2-digit'});
+    const formattedEndDate = endDate.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: '2-digit'});
+    // concatenate the formatted start date and end date values into a single string
+    const concatenatedDates = formattedStartDate + '-' + formattedEndDate;
+	  set_timeframe(concatenatedDates)
+  }); </script>
           <script> function set_timeframe(timeframe) {
 		
 		if (timeframe == "Day") {
@@ -171,30 +198,30 @@
 			conf_score = "97%";
 			ave_score = "86%";
 			time_range = "9/29-9/30"
-		}
-		
-		if (timeframe == "Week") {
+		} else if (timeframe == "Week") {
 			pos_sent = "+0%";
 			tweets_analyzed = "170";
 			conf_score = "94%";
 			ave_score = "85%";
 			time_range = "9/23-9/30"
-		}
-		
-		if (timeframe == "Month") {
+		} else if (timeframe == "Month") {
 			pos_sent = "+1%";
 			tweets_analyzed = "868";
 			conf_score = "82%";
 			ave_score = "76%";
 			time_range = "9/1-9/30"
-		}
-		
-		if (timeframe == "Year") {
+		} else if (timeframe == "Year") {
 			pos_sent = "+19%";
 			tweets_analyzed = "9,825";
 			conf_score = "81%";
 			ave_score = "78%";
 			time_range = "9/30/21-9/30/22"
+		} else {
+			pos_sent = "+19%";
+			tweets_analyzed = "9,825";
+			conf_score = "81%";
+			ave_score = "78%";
+			time_range = timeframe
 		}
 		
 		var happening_summarys = document.getElementsByClassName("happening_summary");
