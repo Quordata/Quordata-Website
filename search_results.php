@@ -12,6 +12,10 @@
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.0.0-alpha23/sigma-graphology.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.0.0-alpha23/sigma.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script> window.onload=function(){
@@ -41,20 +45,21 @@
     
     // Set the content of the meta tag using the query parameter
     var queryTitle = document.getElementById("query_title");
-    queryTitle.content = $query;
+    queryTitle.content = query;
 	var queryTitleProperty = document.getElementById("meta_title_property");
-    queryTitle.content = $query;
+    queryTitle.content = query;
   </script>
   </head>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-custom-color-5 u-header u-header" id="sec-1f2c"><div class="u-clearfix u-sheet u-sheet-1">
     <?php
   // Retrieve the query parameter from the URL
   $query = $_GET['q'];
+  $encquery = urlencode($query);
   
   // Define the Google Custom Search API endpoint and parameters
   $cse_image_id = '91150f2633e924c3f';
   $api_key = 'AIzaSyBV4it0BbqYYJ2H951xsx0ts1XJG0J79jg';
-  $image_endpoint = "https://www.googleapis.com/customsearch/v1?q={$query}&cx={$cse_image_id}&imgSize=medium&imgType=photo&searchType=image&key={$api_key}";
+  $image_endpoint = "https://www.googleapis.com/customsearch/v1?q={$encquery}&cx={$cse_image_id}&imgSize=medium&imgType=photo&searchType=image&key={$api_key}";
   
   // Make a GET request to the API endpoint
   $json = file_get_contents($image_endpoint);
@@ -63,11 +68,11 @@
   $response = json_decode($json);
   
   // Get the URL of the second image result
-  $image_url = $response->items[1]->link;
+  $image_url = $response->items[0]->link;
   
   $cse_news_id = 'c30f6f1d74c714ed6';
   
-    $news_endpoint = "https://www.googleapis.com/customsearch/v1?q={$query}&cx={$cse_news_id}&sort=date&fields=items(title,link)&key={$api_key}";
+    $news_endpoint = "https://www.googleapis.com/customsearch/v1?q={$encquery}&cx={$cse_news_id}&fields=items(title,link)&key={$api_key}";
 	
 // Make a GET request to the API endpoint
   $json = file_get_contents($news_endpoint);
@@ -449,14 +454,181 @@
                   <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-17">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-23">CLOSELY RELATED TOPICS</p>
-                      <img class="u-file-link u-hover-feature u-image u-image-contain u-image-2" src="images/AmazonCloselyRelatedTopicsGraph_New-86.png" data-image-width="700" data-image-height="500" data-href="files/AmazonCloselyRelatedTopicsGraph_New.png" data-target="_blank">
+                      <div id="related-topics-container" style="height: 350px; width: 520px; position: absolute; background-color: transparent; z-index: 9999;"></div>
+                        <script> document.addEventListener('DOMContentLoaded', function() {
+    // Load CSV data
+    Papa.parse('data/beta_companies_keywords.csv', {
+        header: true,
+        download: true,
+        complete: function(results) {
+            var data = results.data;
+            // Retrieve the query parameter from the URL using JavaScript
+    var urlParams = new URLSearchParams(window.location.search);
+    var userQuery = urlParams.get('q');
+            // Find related topics
+            var relatedTopics = data.map(function(row) {
+                return row['Amazon'];
+            });
+            const container = document.getElementById('related-topics-container');
+			
+            let graph = new graphology.Graph();
+            // Add center node
+            graph.addNode(userQuery, {
+                label: userQuery,
+                size: 10,
+                color: '#ec5148',
+                x: 0,
+                y: 0
+            });
+            // Add related topics as nodes and edges to center node
+            relatedTopics.forEach(function(topic, index) {
+                var angle = (index / relatedTopics.length) * 2 * Math.PI;
+                var x = 150 * Math.cos(angle);
+                var y = 150 * Math.sin(angle);
+                graph.addNode(topic, {
+                    label: topic,
+                    size: 10,
+                    color: '#777',
+                    x: x,
+                    y: y
+                });
+                graph.addEdgeWithKey('edge' + (index + 1), userQuery, topic, {
+                    color: '#ccc'
+                });
+            });
+            graph.nodes().forEach(node => {
+                graph.mergeNodeAttributes(node, {
+                    label: node,
+                    size: 15,
+                    color: '#ee9e1c'
+                });
+            });
+            const settings = {
+                minNodeSize: 5,
+                maxNodeSize: 20,
+                minEdgeSize: 1,
+                maxEdgeSize: 5,
+                defaultNodeColor: '#ee9e1c',
+                edgeColor: 'default',
+                defaultEdgeColor: '#ccc'
+            };
+            const renderer = new Sigma.WebGLRenderer(graph, container, settings);
+            const camera = renderer.getCamera();
+            const captor = renderer.getMouseCaptor();
+            // State
+            let draggedNode = null,
+                dragging = false;
+            renderer.on('downNode', e => {
+                dragging = true;
+                draggedNode = e.node;
+                camera.disable();
+            });
+            captor.on('mouseup', e => {
+                dragging = false;
+                draggedNode = null;
+                camera.enable();
+            });
+            captor.on('mousemove', e => {
+                if (!dragging) return;
+                // Get new position of node
+                const pos = renderer.normalizationFunction.inverse(
+                    camera.viewportToGraph(renderer, e.x, e.y)
+                );
+                graph.setNodeAttribute(draggedNode, 'x', pos.x);
+                graph.setNodeAttribute(draggedNode, 'y', pos.y);
+            });
+			renderer.on('clickNode', e => {
+				const node = e.node;
+				const nodeLabel = graph.getNodeAttribute(node, 'label');
+				if (nodeLabel !== userQuery) {
+					const url = 'http://quordata.com/search_results.php?q=' + nodeLabel;
+					window.open(url, '_blank');
+				}
+			});
+            window.graph = graph;
+            window.renderer = renderer;
+            window.camera = renderer.getCamera();
+        }
+    })
+}); </script>
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-26 u-white u-layout-cell-9">
                     <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-18">
                       <p class="u-text u-text-custom-color-5 u-text-default u-text-24">SOURCES TREEMAP<br>
                       </p>
-                      <img class="u-file-link u-image u-image-contain u-image-3" src="images/AmazonSourceTreemap_ChartJS-85.png" data-image-width="700" data-image-height="500" data-href="files/AmazonSourceTreemap_ChartJS.png" data-target="_blank">
+                        <div id="sources-treemap" style="width: 400px; height: 520px;"></div>
+                        <script> document.addEventListener('DOMContentLoaded', function() {
+    // Load CSV data
+    Papa.parse('data/sources_composition.csv', {
+      header: true,
+      download: true,
+      complete: function(results) {
+        var rdata = results.data;
+        // Get user query
+        var userQuery = 'Amazon';
+        // Find related topics
+        var data = rdata.map(function(row) {
+          return row[userQuery];
+        });
+        let labels = ['Twitter', 'Yahoo Finance', 'Reddit', 'Motley Fool', 'Other'];
+        let images = ['images/twitter_logo.png', 'images/yahoofinance_logo.png', 'images/reddit_logo.png', 'images/motley_logo.webp', 'images/news_logo.png'];
+        console.log(data);
+        console.log(labels);
+        console.log(images);
+        const svg = d3.select('#sources-treemap').append('svg').attr('width', 400).attr('height', 520);
+        const treemapLayout = (data, labels, images) => d3.treemap().tile(d3.treemapResquarify).size([400, 520]).padding(1).round(true)(d3.hierarchy({
+            values: data.map((value, i) => ({
+              value,
+              index: i
+            })),
+          },
+          (d) => d.values).sum((d) => d.value));
+        const treemapData = treemapLayout(data, labels, images);
+        const treemapContainer = d3.select("#sources-treemap");
+        const treemapSquares = treemapContainer.selectAll("div").data(treemapData.leaves()).join("div").attr("id", (d) => labels[d.data.index]).attr("style", (d) => `
+          position: absolute;
+          left: ${d.x0}px;
+          top: ${d.y0}px;
+          width: ${d.x1 - d.x0}px;
+          height: ${d.y1 - d.y0}px;
+          background-color: #222;
+          overflow: hidden;
+        `);
+        treemapSquares.append("img").attr("src", (d) => images[d.data.index]).style("width", "100%").style("height", "100%");;
+        treemapSquares.append("div").attr("style", (d) => `
+                    padding: 5px;
+                        box-sizing: border-box;
+    font-size: ${Math.min((d.x1 - d.x0) / 8, 14)}px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    color: #fff;
+                `).text((d) => `${labels[d.data.index]}\n${data[d.data.index]}%`);
+        treemapSquares.on('click', function(d) {
+          var source = 'toggle_news'
+          if (this.id == 'Twitter') {
+            source = 'toggle_twitter';
+          } else if (this.id == 'Reddit') {
+            source = 'toggle_reddit';
+          } else if (this.id == 'Yahoo Finance') {
+            source = 'toggle_news';
+          } else if (this.id == 'Motley Fool') {
+            source = 'toggle_news';
+          } else if (this.id == 'Other') {
+            source = 'toggle_youtube';
+          }
+          toggle_source(source);
+        });
+      }
+    })
+  }); </script>
                     </div>
                   </div>
                 </div>
