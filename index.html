@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
+    <meta name="generator" content="Nicepage 5.9.10, nicepage.com">
     <meta name="referrer" content="origin">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#ffffff">
@@ -18,6 +18,8 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="canonical" href="https://quordata.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
     
     
     
@@ -38,7 +40,89 @@
     <meta property="og:description" content="Get real-time, actionable insights from online text empowering you to make better investments">
     <meta property="og:url" content="https://quordata.com">
     <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <script>
+    function gdprConfirmed() {
+        return true;
+    }
+    function dynamicLoadScript(src) {
+        var script = document.createElement('script');
+        script.src = src && typeof src === 'string' ? src : 'https://www.google.com/recaptcha/api.js?render=6LdzUGcfAAAAAFpVJYjRMbG2Mbom6WLoBoyaVVRL';
+        script.async = true;
+        document.body.appendChild(script);
+        script.onload = function() {
+            let event = new CustomEvent("recaptchaLoaded");
+            document.dispatchEvent(event);
+        };
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var confirmButton = document.querySelector('.u-cookies-consent .u-button-confirm');
+        if (confirmButton) {
+            confirmButton.onclick = dynamicLoadScript;
+        }
+    });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            if (!gdprConfirmed()) {
+                return;
+            }
+            dynamicLoadScript();
+        });
+    </script>
+    <script>
+        document.addEventListener("recaptchaLoaded", function() {
+            if (!gdprConfirmed()) {
+                return;
+            }
+            (function (grecaptcha, sitekey, actions) {
+                var recaptcha = {
+                    execute: function (action, submitFormCb) {
+                        try {
+                            grecaptcha.execute(
+                                sitekey,
+                                {action: action}
+                            ).then(function (token) {
+                                var forms = document.getElementsByTagName('form');
+
+                                for (var i = 0; i < forms.length; i++) {
+                                    var fields = forms[i].getElementsByTagName('input');
+
+                                    for (var j = 0; j < fields.length; j++) {
+                                        var field = fields[j];
+
+                                        if ('recaptchaResponse' === field.getAttribute('name')) {
+                                            field.setAttribute('value', token);
+                                            break;
+                                        }
+                                    }
+                                }
+                                submitFormCb();
+                            });
+                        } catch (e) {
+                            var formError = document.querySelector('.u-form-send-error');
+
+                            if (formError) {
+                                formError.innerText = 'Site Owner Error: ' + e.message.replace(/:[\s\S]*/, '');
+                                formError.style.display = 'block';
+                            }
+                        }
+                    },
+
+                    executeContact: function (submitFormCb) {
+                        recaptcha.execute(actions['contact'], submitFormCb);
+                    }
+                };
+
+                window.recaptchaObject = recaptcha;
+            })(
+                grecaptcha,
+                
+                '6LdzUGcfAAAAAFpVJYjRMbG2Mbom6WLoBoyaVVRL',
+                {'contact': 'contact'}
+            );
+        });
+    </script>
+<meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-custom-color-5 u-header u-header" id="sec-1f2c"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="876" data-image-height="299" title="Home">
           <img src="images/QuordataOrange.png" class="u-logo-image u-logo-image-1">
@@ -382,7 +466,7 @@ window.addEventListener("pageshow", () => {
                         <br>
                         <br>
                         <span style="font-weight: 400;"></span>
-                        <span style="font-weight: 400;">Quordata has big plans for 2023, with a lineup of groundbreaking feature releases. Ensure you don't miss a beat by joining our mailing list!&nbsp;We promise to only send you emails about new releases and updates, we promise.</span>
+                        <span style="font-weight: 400;">Quordata has big plans for 2023, with a lineup of groundbreaking feature releases. Ensure you don't miss a beat by joining our mailing list!&nbsp;We promise to only send you emails about new releases and updates.</span>
                         <br>
                         <span style="font-weight: 700;"></span>
                       </p>
@@ -398,7 +482,7 @@ window.addEventListener("pageshow", () => {
                         <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="email">
                           <div class="u-form-email u-form-group u-label-none">
                             <label for="email-4542" class="u-label">Email</label>
-                            <input type="email" placeholder="Enter a valid email address" id="email-4542" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-50 u-white" required="">
+                            <input type="email" placeholder="Enter a valid email address" id="email-4542" name="email" class="u-input u-input-rectangle u-radius-50" required="">
                           </div>
                           <div class="u-form-group u-form-submit">
                             <a href="#" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-5 u-radius-50 u-btn-1">Subscribe</a>
@@ -407,7 +491,8 @@ window.addEventListener("pageshow", () => {
                           <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
                           <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
                           <input type="hidden" value="" name="recaptchaResponse">
-                          <input type="hidden" name="formServices" value="3942cf665b3567a773eb05e4c5563661">
+                          <input type="hidden" name="formServices" value="57f82f0c181351a7a6636beba561ad05">
+                          <input type="hidden" name="siteKey" value="6LdzUGcfAAAAAFpVJYjRMbG2Mbom6WLoBoyaVVRL">
                         </form>
                       </div>
                       <p class="u-text u-text-2"> We care about your data in our&nbsp;<a href="Privacy.html" class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base uui-text-style-link-2 u-btn-2">privacy policy</a>.
@@ -624,14 +709,187 @@ window.addEventListener("pageshow", () => {
       
       
     </section>
+    <section class="u-align-center u-clearfix u-custom-color-5 u-section-8" id="carousel_2eba">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-20-lg u-size-20-xl u-size-60-md u-size-60-sm u-size-60-xs u-layout-cell-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                  <h2 class="u-text u-text-default u-text-1"> Choose the <span class="u-text-custom-color-1">Quordata </span>Plan That's Right for You
+                  </h2>
+                  <h6 class="u-text u-text-default u-text-2"> At Quordata, we're committed to providing the best AI-powered investment research tools for investors of all levels. Choose between our Basic and Pro plans to access the insights and features that best suit your needs. </h6>
+                </div>
+              </div>
+              <div class="u-container-style u-hover-feature u-layout-cell u-shape-rectangle u-size-20-lg u-size-20-xl u-size-60-md u-size-60-sm u-size-60-xs u-white u-layout-cell-2">
+                <div class="u-container-layout u-container-layout-2">
+                  <h5 class="u-align-center u-text u-text-default u-text-grey-50 u-text-3">BASIC</h5>
+                  <h3 class="u-align-center u-text u-text-4">
+                    <span style="font-size: 36px;">FREE</span>
+                  </h3>
+                  <ul class="u-align-left u-custom-list u-file-icon u-text u-text-default u-text-5">
+                    <li>
+                      <div class="u-list-icon">
+                        <img src="images/2732655.png" alt="">
+                      </div> Access to real-time metrics on social sentiment for up to 10 companies per month
+                    </li>
+                    <li>
+                      <div class="u-list-icon">
+                        <img src="images/2732655.png" alt="">
+                      </div> Basic analysis of publicly traded companies
+                    </li>
+                    <li>
+                      <div class="u-list-icon">
+                        <img src="images/2732655.png" alt="">
+                      </div> Access to our growing community of like-minded investors
+                    </li>
+                  </ul>
+                  <a href="QuordataTool.html" class="u-active-white u-border-2 u-border-hover-white u-border-white u-btn u-btn-round u-button-style u-hover-custom-color-5 u-palette-1-base u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-1">Try Now</a>
+                </div>
+              </div>
+              <div class="u-container-style u-hover-feature u-layout-cell u-shape-rectangle u-size-20-lg u-size-20-xl u-size-60-md u-size-60-sm u-size-60-xs u-white u-layout-cell-3">
+                <div class="u-container-layout u-container-layout-3">
+                  <h5 class="u-align-center u-text u-text-default u-text-grey-50 u-text-6">pro</h5>
+                  <p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-7">$19.99</p>
+                  <p class="u-align-center u-text u-text-default u-text-grey-50 u-text-8"> per month</p>
+                  <ul class="u-align-left u-custom-list u-file-icon u-text u-text-default u-text-9">
+                    <li>
+                      <div class="u-list-icon">
+                        <img src="images/2732655.png" alt="">
+                      </div> Unlimited access to real-time metrics on social sentiment for all publicly traded companies
+                    </li>
+                    <li>
+                      <div class="u-list-icon">
+                        <img src="images/2732655.png" alt="">
+                      </div> Advanced, AI-driven analysis and actionable insights
+                    </li>
+                    <li>
+                      <div class="u-list-icon">
+                        <img src="images/2732655.png" alt="">
+                      </div>Priority access to new features and updates<br>
+                    </li>
+                  </ul>
+                  <a href="#sec-67aa" class="u-active-custom-color-5 u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-dialog-link u-hover-palette-3-base u-radius-50 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-2">GET ON WAITLIST</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </section>
     <style class="u-overlap-style">.u-overlap:not(.u-sticky-scroll) .u-header {
 background-color: #1c3e5e !important
 }</style>
+    
     
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-bc62"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Quordata LLC<br>All rights reserved.
         </p>
       </div></footer>
-  
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-11" id="sec-67aa">
+      <div class="u-container-style u-dialog u-grey-5 u-dialog-1">
+        <div class="u-container-layout u-valign-middle u-container-layout-1">
+          <h2 class="u-align-center u-text u-text-body-color u-text-default u-text-1">Get on Waitlist for Pro!</h2>
+          <p class="u-align-center u-text u-text-body-color u-text-2">We'll let you know when Quordata Pro is ready, in the meantime, you'll have access to the Basic version.</p>
+          <div class="u-expanded-width u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-horizontal u-form-spacing-10 u-inner-form" style="padding: 10px" source="email" name="form">
+              <div class="u-form-email u-form-group">
+                <label for="email-8999" class="u-form-control-hidden u-label">Email</label>
+                <input type="email" placeholder="Enter a valid email address" id="email-8999" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+              </div>
+              <div class="u-align-left u-form-group u-form-submit">
+                <a href="#" class="u-black u-border-1 u-border-black u-btn u-btn-submit u-button-style u-btn-1">Submit</a>
+                <input type="submit" value="submit" class="u-form-control-hidden">
+              </div>
+              <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+              <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+              <input type="hidden" value="" name="recaptchaResponse">
+              <input type="hidden" name="formServices" value="">
+              <input type="hidden" name="siteKey" value="6LdzUGcfAAAAAFpVJYjRMbG2Mbom6WLoBoyaVVRL">
+            </form>
+          </div>
+        </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 348.333 348.334" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-9711"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 348.333 348.334" x="0px" y="0px" id="svg-9711" style="enable-background:new 0 0 348.333 348.334;"><g><path d="M336.559,68.611L231.016,174.165l105.543,105.549c15.699,15.705,15.699,41.145,0,56.85   c-7.844,7.844-18.128,11.769-28.407,11.769c-10.296,0-20.581-3.919-28.419-11.769L174.167,231.003L68.609,336.563   c-7.843,7.844-18.128,11.769-28.416,11.769c-10.285,0-20.563-3.919-28.413-11.769c-15.699-15.698-15.699-41.139,0-56.85   l105.54-105.549L11.774,68.611c-15.699-15.699-15.699-41.145,0-56.844c15.696-15.687,41.127-15.687,56.829,0l105.563,105.554   L279.721,11.767c15.705-15.687,41.139-15.687,56.832,0C352.258,27.466,352.258,52.912,336.559,68.611z"></path>
+</g></svg></button>
+      </div>
+    </section><style>.u-dialog-section-11 .u-dialog-1 {
+  width: 545px;
+  min-height: 317px;
+  box-shadow: 0 0 14px 0 rgba(0,0,0,0.3);
+  margin: 60px auto;
+}
+
+.u-dialog-section-11 .u-container-layout-1 {
+  padding: 30px;
+}
+
+.u-dialog-section-11 .u-text-1 {
+  font-size: 2.25rem;
+  margin: 0 auto;
+}
+
+.u-dialog-section-11 .u-text-2 {
+  margin: 23px 24px 0;
+}
+
+.u-dialog-section-11 .u-form-1 {
+  margin: 27px 0 0;
+}
+
+.u-dialog-section-11 .u-btn-1 {
+  text-transform: uppercase;
+  background-image: none;
+  border-style: solid;
+}
+
+.u-dialog-section-11 .u-icon-1 {
+  width: 16px;
+  height: 16px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 1199px) {
+  .u-dialog-section-11 .u-dialog-1 {
+    height: auto;
+  }
+
+  .u-dialog-section-11 .u-form-1 {
+    margin-right: initial;
+    margin-left: initial;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-11 .u-dialog-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-11 .u-dialog-1 {
+    width: 340px;
+    min-height: 329px;
+  }
+
+  .u-dialog-section-11 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-dialog-section-11 .u-text-2 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .u-dialog-section-11 .u-form-1 {
+    margin-top: 3px;
+    margin-right: initial;
+    margin-left: initial;
+  }
+}</style>
 </body></html>

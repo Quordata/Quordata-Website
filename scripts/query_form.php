@@ -2,6 +2,8 @@
 $value = $_POST['search'];
 $sleep_val = $_COOKIE['timer_val'];
 
+$queries = array('Amazon', 'Boeing', 'Lowes', 'McDonalds', 'Nvidia', 'Pfizer', 'Salesforce', 'Starbucks', 'Tesla', 'Walmart');
+
 // If string is empty, do nothing
 if (empty($value)) {
 	return;
@@ -15,8 +17,16 @@ else {
 	$value = ucwords($value);
 }
 
+$value = urlencode($value);
+
 sleep($sleep_val);
 
-header("location: http://quordata.com/Beta_$value");
+if (in_array($value, $queries)) {
+	header("location: http://quordata.com/Beta_$value");
+	exit();
+} else {
+	header("location: http://quordata.com/search_results.php?q=$value");
+	exit();
+}
 
 ?>
