@@ -1,0 +1,20 @@
+$(document).ready(function() {
+    // Use AJAX to fetch the login status from a PHP script
+    $.ajax({
+        url: 'login_status.php',
+        method: 'GET',
+        success: function(response) {
+            var isLoggedIn = response.isLoggedIn;
+            var email = response.email;
+
+            if (isLoggedIn) {
+                $('#dynamicContent').html('<p>Welcome, ' + email + '!</p>');
+            } else {
+                $('#dynamicContent').html('<a class="login_button" href="Login_Page.html">Log In</a>');
+            }
+        },
+        error: function() {
+            console.log('Error fetching login status.');
+        }
+    });
+});

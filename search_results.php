@@ -357,6 +357,11 @@
             </p>
           </div>
         </div>
+		
+        <div class="u-clearfix u-custom-html u-custom-html-3">
+		<script src="scripts/request_query_subscribe.js"></script>
+<button id="subscribe_button" class="u-container-style u-group u-group-2 u-palette-1-base u-radius-26 u-shape-round u-block-3f69-21" style="border: none; position: absolute; margin-top: 3px; margin-left: 30px">Subscribe</button>
+</div>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="sec-6b72">

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title id="query_title">Query</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="search_results.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.5.0, nicepage.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.0.0-alpha23/sigma-graphology.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.0.0-alpha23/sigma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script>
+      window.onload = function() {
+        $(function() {
+          $("#sentiment-price-chart").load("PriceSentimentScripts/Amazon.html");
+        });
+      }
+    </script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Beta",
+        "logo": "images/QuordataOrange.png"
+      }
+    </script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="" id="meta_title_property">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+    <script>
+      // Retrieve the query parameter from the URL using JavaScript
+      var urlParams = new URLSearchParams(window.location.search);
+      var query = urlParams.get('q');
+      // Set the content of the meta tag using the query parameter
+      var queryTitle = document.getElementById("query_title");
+      queryTitle.content = query;
+      var queryTitleProperty = document.getElementById("meta_title_property");
+      queryTitle.content = query;
+    </script>
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en">
+    <header class="u-clearfix u-custom-color-5 u-header u-header" id="sec-1f2c">
+      <div class="u-clearfix u-sheet u-sheet-1"> <?php
+  // Retrieve the query parameter from the URL
+  $query = $_GET['q'];
+  $encquery = urlencode($query);
+  
+  // Define the Google Custom Search API endpoint and parameters
+  $cse_image_id = '91150f2633e924c3f';
+  $api_key = 'AIzaSyBV4it0BbqYYJ2H951xsx0ts1XJG0J79jg';
+  $image_endpoint = "https://www.googleapis.com/customsearch/v1?q={$encquery}&cx={$cse_image_id}&imgSize=medium&imgType=photo&searchType=image&key={$api_key}";
+  
+  // Make a GET request to the API endpoint
+  $json = file_get_contents($image_endpoint);
+  
+  // Parse the JSON response
+  $response = json_decode($json);
+  
+  // Get the URL of the second image result
+  $image_url = $response->items[0]->link;
+  
+  $cse_news_id = 'c30f6f1d74c714ed6';
+  
+    $news_endpoint = "https://www.googleapis.com/customsearch/v1?q={$encquery}&cx={$cse_news_id}&fields=items(title,link)&key={$api_key}";
+	
+// Make a GET request to the API endpoint
+  $json = file_get_contents($news_endpoint);
+  
+  // Parse the JSON response
+  $response = json_decode($json);
+  
+  // Get the first news article and display the headline and URL
+  $article = $response->items[0];
+  $headline = $article->title;
+  $article_url = $article->link;
+  
+  ?> <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="876" data-image-height="299" title="Home">
+          <img src="images/QuordataOrange.png" class="u-logo-image u-logo-image-1">
+        </a>
+        <div class="u-clearfix u-group-elements u-group-elements-1">
+          <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">
+            <a href="Whitepaper.html">
+              <span class="u-file-icon u-icon u-icon-1">
+                <img src="images/5766916.png" alt="">
+              </span>&nbsp; </a>
+            <a href="Learn.html" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1">Learn More</a>
+          </p>
+          <p class="u-text u-text-default u-text-2">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-2" href="Team.html">
+              <span class="u-file-icon u-icon u-icon-2">
+                <img src="images/476863.png" alt="">
+              </span>&nbsp;Team </a>
+          </p>
+          <p class="u-text u-text-3">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-3" href="https://twitter.com/QuordataApp" target="_blank">
+              <span class="u-file-icon u-icon u-icon-3">
+                <img src="images/3128310.png" alt="">
+              </span>&nbsp;Follow Us </a>
+          </p>
+          <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-4">
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4" href="mailto:hello@quordata.com">
+              <span class="u-file-icon u-icon u-icon-4">
+                <img src="images/4386562.png" alt="">
+              </span>&nbsp;Email Us </a>
+          </p>
+        </div>
+      </div>
+    </header>
+    <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-custom-html u-custom-html-1">
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-1" value="1">
+            <p style="margin-top: -7px;">
+              <b style="">Twitter</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_reddit" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-2" value="1">
+            <p style="margin-top: -7px;">
+              <b style="">Reddit</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_youtube" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-3" value="1">
+            <p style="margin-top: -7px;">
+              <b style="">YouTube</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_news" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-4" value="1">
+            <p style="margin-top: -7px;">
+              <b style="">News</b>
+            </p>
+          </button>
+          <script>
+            function toggle_source(source) {
+              target = document.getElementById(source);
+              twitter_pos_sent = 8;
+              twitter_conf_score = 91;
+              twitter_ave_score = 70;
+              reddit_pos_sent = 3;
+              reddit_conf_score = 83;
+              reddit_ave_score = 80;
+              youtube_pos_sent = 3;
+              youtube_conf_score = 71;
+              youtube_ave_score = 70;
+              news_pos_sent = 5;
+              news_conf_score = 84;
+              news_ave_score = 71;
+              if (target.value == "1") {
+                target.value = "0";
+                target.style.background = "#898989";
+              } else {
+                target.value = "1";
+                target.style.background = "#f1c50e";
+              }
+              twitter_source_state = parseInt(document.getElementById("toggle_twitter").value);
+              reddit_source_state = parseInt(document.getElementById("toggle_reddit").value);
+              youtube_source_state = parseInt(document.getElementById("toggle_youtube").value);
+              news_source_state = parseInt(document.getElementById("toggle_news").value);
+              num_on = twitter_source_state + reddit_source_state + youtube_source_state + news_source_state;
+              if (num_on < 4) {
+                pos_sent = `+${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
+                conf_score = `${Math.round((twitter_conf_score*twitter_source_state + reddit_conf_score*reddit_source_state + youtube_conf_score*youtube_source_state + news_conf_score*news_source_state) / num_on)}%`;
+                ave_score = `${Math.round((twitter_ave_score*twitter_source_state + reddit_ave_score*reddit_source_state + youtube_ave_score*youtube_source_state + news_ave_score*news_source_state) / num_on)}%`;
+              } else if (num_on == 0) {
+                pos_sent = "NaN";
+                conf_score = "NaN";
+                ave_score = "NaN";
+              } else {
+                pos_sent = "+5%";
+                conf_score = "81%";
+                ave_score = "80%";
+              }
+              var positive_scores = document.getElementsByClassName("positive_score");
+              var positive_score = positive_scores[0];
+              positive_score.innerHTML = `
+																								
+																								
+																								
+																								<b>${pos_sent}</b>`;
+              var confidence_scores = document.getElementsByClassName("confidence_score");
+              var confidence_score = confidence_scores[0];
+              confidence_score.innerHTML = `
+																								
+																								
+																								
+																								<b>${conf_score}</b>`;
+              var average_scores = document.getElementsByClassName("average_score");
+              var average_score = average_scores[0];
+              average_score.innerHTML = `
+																								
+																								
+																								
+																								<b>${ave_score}</b>`;
+            }
+          </script>
+        </div>
+        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <p class="u-align-center u-text u-text-1"> <?php echo strtoupper($query); ?> </p>
+          </div>
+        </div>
+        <div class="u-clearfix u-custom-html u-custom-html-2">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Day">
+            <p style="margin-top: -7px;">
+              <b style="">Day</b>
+            </p>
+          </button>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-6" value="Week">
+            <p style="margin-top: -7px;">
+              <b style="">Week</b>
+            </p>
+          </button>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-7" value="Month">
+            <p style="margin-top: -7px;">
+              <b style="">Month</b>
+            </p>
+          </button>
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-8" value="Year">
+            <p style="margin-top: -7px;">
+              <b style="">Year</b>
+            </p>
+          </button>
+          <label for="start-date" style="width: 100px; height: 28px; margin-top: 58px; margin-left: 475px; position: absolute">Start Date:</label>
+          <input type="date" id="start-date" name="start-date" style="width: 160px; height: 28px; margin-top: 58px; margin-left: 570px; position: absolute">
+          <label for="end-date" style="width: 100px; height: 28px; margin-top: 58px; margin-left: 750px; position: absolute">End Date:</label>
+          <input type="date" id="end-date" name="end-date" style="width: 160px; height: 28px; margin-top: 58px; margin-left: 845px; position: absolute" disabled>
+          <script>
+            // get references to the start date and end date input fields
+            const startDateInput = document.getElementById('start-date');
+            const endDateInput = document.getElementById('end-date');
+            // add an event listener to the start date input field
+            startDateInput.addEventListener('change', function() {
+              // when the start date is changed, enable the end date input field
+              endDateInput.disabled = false;
+              // set the minimum value for the end date input field to the selected start date
+              endDateInput.min = startDateInput.value;
+            });
+            // add an event listener to the end date input field
+            endDateInput.addEventListener('change', function() {
+              // parse the start date and end date values into Date objects
+              const startDate = new Date(startDateInput.value);
+              const endDate = new Date(endDateInput.value);
+              // format the start date and end date using the desired format
+              const formattedStartDate = startDate.toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              });
+              const formattedEndDate = endDate.toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              });
+              // concatenate the formatted start date and end date values into a single string
+              const concatenatedDates = formattedStartDate + '-' + formattedEndDate;
+              set_timeframe(concatenatedDates)
+            });
+          </script>
+          <script>
+            function set_timeframe(timeframe) {
+              if (timeframe == "Day") {
+                pos_sent = "-7%";
+                tweets_analyzed = "28";
+                conf_score = "91%";
+                ave_score = "70%";
+                time_range = "9/29-9/30"
+              } else if (timeframe == "Week") {
+                pos_sent = "-2%";
+                tweets_analyzed = "173";
+                conf_score = "83%";
+                ave_score = "80%";
+                time_range = "9/23-9/30"
+              } else if (timeframe == "Month") {
+                pos_sent = "+5%";
+                tweets_analyzed = "867";
+                conf_score = "81%";
+                ave_score = "80%";
+                time_range = "9/1-9/30"
+              } else if (timeframe == "Year") {
+                pos_sent = "+11%";
+                tweets_analyzed = "9,814";
+                conf_score = "84%";
+                ave_score = "71%";
+                time_range = "9/30/21-9/30/22"
+              } else {
+                pos_sent = "+11%";
+                tweets_analyzed = "9,814";
+                conf_score = "84%";
+                ave_score = "71%";
+                time_range = timeframe
+              }
+              var happening_summarys = document.getElementsByClassName("happening_summary");
+              var happening_summary = happening_summarys[0];
+              happening_summary.innerHTML = ' < span style = "font-weight: 700;" > ' + ' < ? php echo $query; ? > ' + ' < /span>&nbsp;has been experiencing  < span style = "font-weight: 700;" > positive < /span>sentiment the past  < span style = "font-weight: 700;" > ' + timeframe.toLowerCase() + ' < /span> with an average sentiment score of  < span style = "font-weight: 700;" > ' + ave_score + ' < /span>< span style = "font-weight: 700;" >< /span>';
+              var positive_scores = document.getElementsByClassName("positive_score");
+              var positive_score = positive_scores[0];
+              positive_score.innerHTML = `
+																										
+																										
+																										
+																										<b>${pos_sent}</b>`;
+              var confidence_scores = document.getElementsByClassName("confidence_score");
+              var confidence_score = confidence_scores[0];
+              confidence_score.innerHTML = `
+																										
+																										
+																										
+																										<b>${conf_score}</b>`;
+              var tweet_counts = document.getElementsByClassName("tweet_count");
+              var tweet_count = tweet_counts[0];
+              tweet_count.innerHTML = `
+																										
+																										
+																										
+																										<b>${tweets_analyzed}</b>`;
+              var average_scores = document.getElementsByClassName("average_score");
+              var average_score = average_scores[0];
+              average_score.innerHTML = `
+																										
+																										
+																										
+																										<b>${ave_score}</b>`;
+              var sentiment_over_times = document.getElementsByClassName("sentiment_over_time");
+              var sentiment_over_time = sentiment_over_times[0];
+              sentiment_over_time.innerHTML = `
+																										
+																										
+																										
+																										<b>SENTIMENT OVER TIME (${time_range})</b>`;
+              var insight_summarys = document.getElementsByClassName("insight_summary");
+              var insight_summary = insight_summarys[0];
+              insight_summary.innerHTML = 'Quordata notes  < span style = "font-weight: 700;" > ' + ' < ? php echo $query; ? > ' + ' < /span>stock has been trading in a  < span style = "font-weight: 700;" > negative < /span>trend the  < span style = "font-weight: 700;" > previous ' + timeframe.toLowerCase() + ' < /span>.';
+              var insight_predictions = document.getElementsByClassName("insight_prediction");
+              var insight_prediction = insight_predictions[0];
+              insight_prediction.innerHTML = `
+																										
+																										
+																										
+																										<b>Quordata has seen that when the 1-${timeframe.toLowerCase()} sentiment score is positive, price tends to rise the following ${timeframe.toLowerCase()} by 1-5%.</b>`;
+            }
+          </script>
+        </div>
+        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <p class="u-align-center u-text u-text-2">
+              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-9" href="Home.html">BACK</a>
+            </p>
+          </div>
+        </div>
+		<script src="scripts/request_query_subscribe.js"></script>
+<button id="subscribe_button" class="u-container-style u-group u-group-2 u-palette-1-base u-radius-26 u-shape-round u-block-3f69-21" style="border: none; position: absolute; margin-top: 3px; margin-left: 30px">Subscribe</button>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="sec-6b72">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-gutter-0 u-layout">
+            <div class="u-layout-col">
+              <div class="u-size-20">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-custom-color-5 u-layout-cell u-size-6 u-layout-cell-1">
+                    <div class="u-container-layout u-container-layout-1">
+                      <h1 class="u-text u-title u-text-1">My Profile</h1>
+                      <span class="u-file-icon u-icon u-icon-rectangle u-text-white u-icon-1">
+                        <img src="images/666201-8050f29d.png" alt="">
+                      </span>
+                      <h1 class="u-text u-text-default u-title u-text-2">My Reports</h1>
+                      <span class="u-file-icon u-icon u-icon-rectangle u-text-white u-icon-2">
+                        <img src="images/1508964-babbab85.png" alt="">
+                      </span>
+                      <h1 class="u-text u-text-default u-title u-text-3">My Portfolio</h1>
+                      <span class="u-file-icon u-icon u-icon-rectangle u-text-white u-icon-3">
+                        <img src="images/1383507-9d70d46e.png" alt="">
+                      </span>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-37 u-white u-layout-cell-2">
+                    <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-2">
+                      <div class="u-border-1 u-border-grey-dark-1 u-hidden-xs u-line u-line-vertical u-line-1"></div>
+                      <h1 class="u-align-center u-text u-text-custom-color-5 u-text-default u-title u-text-4">WHAT'S HAPPENING?</h1>
+                      <img class="u-image u-image-round u-preserve-proportions u-radius-21 u-image-1" src="
+																																			
+																																			
+																																			
+																																			<?php echo $image_url; ?>" alt="" data-image-width="1500" data-image-height="844">
+                      <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-1">
+                        <div class="u-container-layout u-container-layout-3">
+                          <p class="happening_summary u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-5">
+                            <span style="font-weight: 700;"> <?php echo $query; ?> </span>&nbsp;has been experiencing <span style="font-weight: 700;">positive </span>sentiment the past <span style="font-weight: 700;">month </span>with an average sentiment score of <span style="font-weight: 700;"> 80</span>
+                            <span style="font-weight: 700;">%</span>
+                          </p>
+                          <span class="u-file-icon u-icon u-icon-4">
+                            <img src="images/5231421.png" alt="">
+                          </span>
+                        </div>
+                      </div>
+                      <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-2">
+                        <div class="u-container-layout u-container-layout-4">
+                          <p class="u-text u-text-body-color u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-6"> Quordata believes the biggest driver of this <span style="font-weight: 700;">positive </span>sentiment comes from <span style="font-weight: 700;">news that <?php echo $headline; ?> </span> &nbsp;( <a href="
+																																								
+																																								
+																																								
+																																								<?php echo $article_url; ?>" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" target="_blank">Link </a>). </p>
+                          <span class="u-file-icon u-icon u-icon-5">
+                            <img src="images/4395935.png" alt="">
+                          </span>
+                        </div>
+                      </div>
+                      <div class="u-container-style u-gradient u-group u-radius-24 u-shape-round u-group-3">
+                        <div class="u-container-layout u-container-layout-5">
+                          <div class="u-border-2 u-border-grey-dark-1 u-hidden-xs u-line u-line-vertical u-line-2"></div>
+                          <div class="u-border-2 u-border-grey-dark-1 u-hidden-xs u-line u-line-vertical u-line-3"></div>
+                          <div class="u-border-2 u-border-grey-dark-1 u-line u-line-vertical u-line-4"></div>
+                          <div class="u-border-2 u-border-grey-dark-1 u-line u-line-vertical u-line-5"></div>
+                          <span class="u-file-icon u-icon u-icon-6">
+                            <img src="images/2893811.png" alt="">
+                          </span>
+                          <div class="u-border-1 u-border-grey-dark-1 u-line u-line-vertical u-line-6"></div>
+                        </div>
+                      </div>
+                      <p class="u-align-right u-text u-text-7">100</p>
+                      <p class="u-text u-text-8">0</p>
+                      <p class="u-text u-text-9">Avg. Sentiment Score</p>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-17 u-white u-layout-cell-3">
+                    <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-6">
+                      <h1 class="u-text u-text-custom-color-5 u-text-default u-title u-text-10">KEY METRICS</h1>
+                      <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-4">
+                        <div class="u-container-layout u-container-layout-7">
+                          <p class="tweet_count u-align-left u-text u-text-body-color u-text-11">867</p>
+                          <span class="u-file-icon u-icon u-text-palette-4-base u-icon-7">
+                            <img src="images/64673-cadf79d1.png" alt="">
+                          </span>
+                          <p class="u-align-left u-text u-text-body-color u-text-12">Tweets&nbsp; <br>Analyzed </p>
+                        </div>
+                      </div>
+                      <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-5">
+                        <div class="u-container-layout u-container-layout-8">
+                          <p class="positive_score u-align-left u-text u-text-13">+5%</p>
+                          <span class="u-file-icon u-icon u-icon-8">
+                            <img src="images/3588171.png" alt="">
+                          </span>
+                          <p class="u-align-left u-text u-text-body-color u-text-14">Sentiment Change</p>
+                        </div>
+                      </div>
+                      <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-6">
+                        <div class="u-container-layout u-container-layout-9">
+                          <span class="u-file-icon u-icon u-icon-9">
+                            <img src="images/456115.png" alt="">
+                          </span>
+                          <p class="confidence_score u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-text u-text-body-color u-text-15">81%</p>
+                          <p class="u-align-left u-text u-text-body-color u-text-16">Confident in Sentiment Score</p>
+                        </div>
+                      </div>
+                      <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-7">
+                        <div class="u-container-layout u-container-layout-10">
+                          <p class="average_score u-align-left u-text u-text-body-color u-text-17">80%</p>
+                          <span class="u-file-icon u-icon u-icon-10">
+                            <img src="images/5184373.png" alt="">
+                          </span>
+                          <p class="u-align-left u-text u-text-body-color u-text-18">Average Sentiment Score</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-20">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-custom-color-5 u-hidden-xs u-layout-cell u-size-6 u-layout-cell-4">
+                    <div class="u-container-layout u-container-layout-11"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-17 u-white u-layout-cell-5">
+                    <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-12">
+                      <h1 class="u-align-center u-text u-text-custom-color-5 u-text-default u-title u-text-19">OUR INSIGHTS</h1>
+                      <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-8">
+                        <div class="u-container-layout u-container-layout-13">
+                          <span class="u-file-icon u-icon u-icon-11">
+                            <img src="images/4730727.png" alt="">
+                          </span>
+                          <p class="insight_summary u-text u-text-body-color u-text-20"> Quordata notes <span style="font-weight: 700;"> <?php echo $query; ?> </span>stock has been trading in a <span style="font-weight: 700;">negative </span>trend the <span style="font-weight: 700;">previous month</span>. </p>
+                        </div>
+                      </div>
+                      <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-9">
+                        <div class="u-container-layout u-container-layout-14">
+                          <p class="insight_prediction u-text u-text-body-color u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-21">Quordata has seen that when the 1-month sentiment score is positive, price tends to rise the following month by 1-5%.&nbsp;</p>
+                        </div>
+                      </div>
+                      <span class="u-file-icon u-icon u-icon-12">
+                        <img src="images/4175914.png" alt="">
+                      </span>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-37 u-white u-layout-cell-6">
+                    <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-15">
+                      <p class="sentiment_over_time u-text u-text-custom-color-5 u-text-default u-text-22">SENTIMENT OVER TIME (9/1-9/30)</p>
+                      <div class="u-clearfix u-custom-html u-custom-html-1">
+                        <div id="sentiment-price-chart"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-20">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-custom-color-5 u-hidden-xs u-layout-cell u-size-6 u-layout-cell-7">
+                    <div class="u-container-layout u-container-layout-16"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
+                    <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-17">
+                      <p class="u-text u-text-custom-color-5 u-text-default u-text-23">CLOSELY RELATED TOPICS</p>
+                      <div id="related-topics-container" style="height: 500px; width: 520px; position: absolute; background-color: transparent; z-index: 9999;"></div>
+                      <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          // Retrieve the query parameter from the URL using JavaScript
+                          var urlParams = new URLSearchParams(window.location.search);
+                          var userQuery = urlParams.get('q');
+                          var myHeaders = new Headers();
+                          myHeaders.append("Content-Type", "application/json");
+                          var requestOptions = {
+                            method: 'POST',
+                            headers: myHeaders,
+                            redirect: 'follow'
+                          };
+                          const url = `https://apxhx30s83.execute-api.us-west-1.amazonaws.com/prod/google_trends_resource?topic=${userQuery}`;
+                          const container = document.getElementById('related-topics-container');
+                          let graph = new graphology.Graph();
+                          // Add center node
+                          graph.addNode(userQuery, {
+                            label: userQuery,
+                            size: 10,
+                            color: '#ec5148',
+                            x: 0,
+                            y: 0
+                          });
+                          const settings = {
+                            minNodeSize: 5,
+                            maxNodeSize: 20,
+                            minEdgeSize: 1,
+                            maxEdgeSize: 5,
+                            defaultNodeColor: '#ee9e1c',
+                            edgeColor: 'default',
+                            defaultEdgeColor: '#ccc'
+                          };
+                          fetch(url, requestOptions).then(response => {
+                            if (!response.ok) {
+                              throw new Error('Failed to get related topics');
+                            }
+                            return response.json();
+                          }).then(result => {
+							  
+							if (result.length > 6) {
+							  result = result.slice(0, 6);
+							}
+                            let relatedTopics = [...new Set(result)];
+                            // Remove userQuery from relatedTopics
+                            relatedTopics = relatedTopics.filter(topic => topic !== userQuery);
+                            console.log(relatedTopics);
+                            // Add related topics as nodes and edges to center node
+                            relatedTopics.forEach(function(topic, index) {
+                              var angle = (index / relatedTopics.length) * 2 * Math.PI;
+                              var x = 150 * Math.cos(angle);
+                              var y = 150 * Math.sin(angle);
+                              graph.addNode(topic, {
+                                label: topic,
+                                size: 10,
+                                color: '#777',
+                                x: x,
+                                y: y
+                              });
+                              graph.addEdgeWithKey('edge' + (index + 1), userQuery, topic, {
+                                color: '#ccc'
+                              });
+                            });
+                            graph.nodes().forEach(node => {
+                              graph.mergeNodeAttributes(node, {
+                                label: node,
+                                size: 15,
+                                color: '#ee9e1c'
+                              });
+                            });
+                            const renderer = new Sigma.WebGLRenderer(graph, container, settings);
+                            const camera = renderer.getCamera();
+                            const captor = renderer.getMouseCaptor();
+                            // State
+                            let draggedNode = null,
+                              dragging = false;
+                            renderer.on('downNode', e => {
+                              dragging = true;
+                              draggedNode = e.node;
+                              camera.disable();
+                            });
+                            captor.on('mouseup', e => {
+                              dragging = false;
+                              draggedNode = null;
+                              camera.enable();
+                            });
+                            captor.on('mousemove', e => {
+                              if (!dragging) return;
+                              // Get new position of node
+                              const pos = renderer.normalizationFunction.inverse(camera.viewportToGraph(renderer, e.x, e.y));
+                              graph.setNodeAttribute(draggedNode, 'x', pos.x);
+                              graph.setNodeAttribute(draggedNode, 'y', pos.y);
+                            });
+                            renderer.on('clickNode', e => {
+                              const node = e.node;
+                              const nodeLabel = graph.getNodeAttribute(node, 'label');
+                              if (nodeLabel !== userQuery) {
+                                const url = 'http://quordata.com/search_results.php?q=' + nodeLabel;
+                                window.open(url, '_blank');
+                              }
+                            });
+                            window.graph = graph;
+                            window.renderer = renderer;
+                            window.camera = renderer.getCamera();
+                          })
+                        });
+                      </script>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-26 u-white u-layout-cell-9">
+                    <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-18">
+                      <p class="u-text u-text-custom-color-5 u-text-default u-text-24">SOURCES TREEMAP <br>
+                      </p>
+                      <div id="sources-treemap" style="width: 400px; height: 520px;"></div>
+                      <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          // Load CSV data
+                          Papa.parse('data/sources_composition.csv', {
+                            header: true,
+                            download: true,
+                            complete: function(results) {
+                              var rdata = results.data;
+                              // Get user query
+                              var userQuery = 'Amazon';
+                              // Find related topics
+                              var data = rdata.map(function(row) {
+                                return row[userQuery];
+                              });
+                              let labels = ['Twitter', 'Yahoo Finance', 'Reddit', 'Motley Fool', 'Other'];
+                              let images = ['images/twitter_logo.png', 'images/yahoofinance_logo.png', 'images/reddit_logo.png', 'images/motley_logo.webp', 'images/news_logo.png'];
+                              const svg = d3.select('#sources-treemap').append('svg').attr('width', 400).attr('height', 520);
+                              const treemapLayout = (data, labels, images) => d3.treemap().tile(d3.treemapResquarify).size([400, 520]).padding(1).round(true)(d3.hierarchy({
+                                  values: data.map((value, i) => ({
+                                    value,
+                                    index: i
+                                  })),
+                                },
+                                (d) => d.values).sum((d) => d.value));
+                              const treemapData = treemapLayout(data, labels, images);
+                              const treemapContainer = d3.select("#sources-treemap");
+                              const treemapSquares = treemapContainer.selectAll("div").data(treemapData.leaves()).join("div").attr("id", (d) => labels[d.data.index]).attr("style", (d) => `
+          position: absolute;
+          left: ${d.x0}px;
+          top: ${d.y0}px;
+          width: ${d.x1 - d.x0}px;
+          height: ${d.y1 - d.y0}px;
+          background-color: #222;
+          overflow: hidden;
+        `);
+                              treemapSquares.append("img").attr("src", (d) => images[d.data.index]).style("width", "100%").style("height", "100%");;
+                              treemapSquares.append("div").attr("style", (d) => `
+                    padding: 5px;
+                        box-sizing: border-box;
+    font-size: ${Math.min((d.x1 - d.x0) / 8, 14)}px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    color: #fff;
+                `).text((d) => `${labels[d.data.index]}\n${data[d.data.index]}%`);
+                              treemapSquares.on('click', function(d) {
+                                var source = 'toggle_news'
+                                if (this.id == 'Twitter') {
+                                  source = 'toggle_twitter';
+                                } else if (this.id == 'Reddit') {
+                                  source = 'toggle_reddit';
+                                } else if (this.id == 'Yahoo Finance') {
+                                  source = 'toggle_news';
+                                } else if (this.id == 'Motley Fool') {
+                                  source = 'toggle_news';
+                                } else if (this.id == 'Other') {
+                                  source = 'toggle_youtube';
+                                }
+                                toggle_source(source);
+                              });
+                            }
+                          })
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-bc62">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Quordata <br>All rights reserved. </p>
+      </div>
+    </footer>
+  </body>
+</html>

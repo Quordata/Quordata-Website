@@ -60,6 +60,11 @@
             </a>
           </p>
         </div>
+        <div class="u-clearfix u-custom-html u-custom-html-1">
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="scripts/account_header.js"></script>
+          <div id="loginStatus"></div>
+        </div>
       </div></header>
     <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
       <div class="u-align-left u-clearfix u-sheet u-sheet-1">
@@ -275,6 +280,10 @@
               <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-9" href="Home.html">BACK</a>
             </p>
           </div>
+        </div>
+        <div class="u-clearfix u-custom-html u-custom-html-3">
+          <script src="scripts/request_query_subscribe.js"></script>
+          <button id="subscribe_button" class="u-container-style u-group u-group-2 u-palette-1-base u-radius-26 u-shape-round u-group-3">Subscribe</button>
         </div>
       </div>
     </section>
@@ -517,9 +526,7 @@
         });
         let labels = ['Twitter', 'Yahoo Finance', 'Reddit', 'Motley Fool', 'Other'];
         let images = ['images/twitter_logo.png', 'images/yahoofinance_logo.png', 'images/reddit_logo.png', 'images/motley_logo.webp', 'images/news_logo.png'];
-        console.log(data);
-        console.log(labels);
-        console.log(images);
+		  
         const svg = d3.select('#sources-treemap').append('svg').attr('width', 400).attr('height', 520);
         const treemapLayout = (data, labels, images) => d3.treemap().tile(d3.treemapResquarify).size([400, 520]).padding(1).round(true)(d3.hierarchy({
             values: data.map((value, i) => ({
