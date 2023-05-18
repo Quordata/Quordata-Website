@@ -138,26 +138,67 @@
       </div></header>
     <section class="u-clearfix u-custom-color-5 u-section-1" id="sec-0818">
       <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-custom-html u-custom-html-1">
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script> $.ajax({
+		url: 'scripts/profile_check.php',
+		type: 'GET',
+		success: function(response) {
+			// Handle the response here
+			if (response === 'logged_in') {
+				// User is logged in
+				// Proceed with displaying the content or redirect if needed
+			} else {
+				// User is not logged in
+				// Redirect the user to the login page or display an access denied message
+				window.location.href = 'https://quordata.com/Login_Page';
+			}
+		},
+		error: function() {
+			// Handle errors here
+			// Display an error message or handle the error as needed
+		}
+	}); </script>
+        </div>
         <div class="u-container-style u-group u-palette-5-base u-radius-15 u-shape-round u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <p class="u-text u-text-default u-text-grey-90 u-text-1">Email:</p>
-            <div class="u-clearfix u-custom-html u-custom-html-1">
-              <p id="account-email" style="color: black; font-size: 24px;">myemail@domain.com</p>
-            </div>
             <div class="u-clearfix u-custom-html u-custom-html-2">
-              <button id="change-password">Change password</button>
+              <p id="account-email" style="color: black; font-size: 24px;"></p>
+              <script src="scripts/profile_email.js"></script>
             </div>
-            <p class="u-text u-text-black u-text-default u-text-2">Subscriptions<span style="font-weight: 700;"></span>
+            <div class="u-clearfix u-custom-html u-custom-html-3">
+              <form method="post" action="scripts/change_password.php" id="change_password_form">
+                <p class="u-text u-text-black u-text-default u-text-2">Password:</p>
+                <input class="u-search-input u-search-input-1 u-search-input-1" id="password_input" name="password" value="" placeholder="Password" required="" type="password">
+                <p class="u-text u-text-black u-text-default u-text-2">Re-enter Password:</p>
+                <input class="u-search-input u-search-input-1 u-search-input-1" id="password_reinput" name="repassword" value="" placeholder="Re-enter password" required="" type="password">
+                <button type="submit" form="change_password_form" id="change-password" class="u-btn u-btn-2 u-btn-round u-button-style u-custom-color-1 u-radius-50 u-btn-1" value="Change Password"><b style="font-weight: 700;">Change Password</b>
+                </button>
+              </form>
+              <script> const passwordInput = document.getElementById('password_input');
+const confirmPasswordInput = document.getElementById('password_reinput');
+confirmPasswordInput.addEventListener('input', () => {
+  const password = passwordInput.value;
+  const confirmPassword = confirmPasswordInput.value;
+  const isValid = password === confirmPassword;
+  confirmPasswordInput.setCustomValidity(isValid ? '' : 'Passwords do not match.');
+});
+	
+const changePasswordForm = document.getElementById('change_password_form');
+	changePasswordForm.addEventListener('submit', (event) => {
+  const password = passwordInput.value;
+  const confirmPassword = confirmPasswordInput.value;
+  const isValid = password === confirmPassword;
+  if (!isValid) {
+	  
+    event.preventDefault(); // Prevent form submission
+    return;
+  }
+}); </script>
+            </div>
+            <p class="u-text u-text-black u-text-default u-text-4">Subscriptions<span style="font-weight: 700;"></span>
             </p>
-            <div class="u-clearfix u-custom-html u-custom-html-3"><!--?php
-    session_start();
-    // Check if the user is not logged in
-    if (!isset($_SESSION['email'])) {
-        // Redirect the user to the login page or display an access denied message
-        header("Location: https://quordata.com/Login_Page");
-        exit();
-    }
-    ?--></div>
             <div class="u-clearfix u-custom-html u-custom-html-4">
               <div class="subscription_table u-table u-table-1 u-table-responsive">
                 <table class="u-table-entity">

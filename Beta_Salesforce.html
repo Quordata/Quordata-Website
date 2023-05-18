@@ -284,7 +284,10 @@
         </div>
         <div class="u-clearfix u-custom-html u-custom-html-3">
           <script src="scripts/request_query_subscribe.js"></script>
-          <button id="subscribe_button" class="u-container-style u-group u-group-2 u-palette-1-base u-radius-26 u-shape-round u-group-3">Subscribe</button>
+          <div style="display: flex; align-items: center; white-space: nowrap;">
+            <button id="subscribe_button" class="u-block-3f69-21 u-palette-1-base u-radius-26 u-shape-round" onmouseover="this.style.color = 'gray';" onmouseout="this.style.color = 'white';" style="border: none; margin-left: 10px; cursor: pointer;">Subscribe</button>
+            <p id="response_text" style="display: none; margin-left: 10px; color: #ee9e1c; font-weight: bold;"></p>
+          </div>
         </div>
       </div>
     </section>

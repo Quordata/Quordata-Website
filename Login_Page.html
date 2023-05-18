@@ -148,14 +148,67 @@
                 <a href="Sign_Up.html" class="u-btn u-btn-round u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-radius-50 u-btn-1"><span class="u-file-icon u-icon u-icon-1"><img src="images/QuordataOrangeLogo.png" alt=""></span>&nbsp;Sign Up
                 </a>
                 <div class="u-clearfix u-custom-html u-custom-html-1">
-                  <form action="scripts/login.php" method="post" id="login_form">
+                  <form id="login_form">
                     <p class="u-text u-text-black u-text-default u-text-3">Email:</p>
                     <input class="u-search-input u-search-input-1 u-search-input-1" id="email_input" name="email" value="" placeholder="example@example.com" required="">
                     <p class="u-text u-text-black u-text-default u-text-4">Password:</p>
                     <input class="u-search-input u-search-input-1 u-search-input-2" id="password_input" name="password" type="password" value="" placeholder="Password" required="">
-                    <button type="submit" form="login_form" id="login_request" class="u-btn u-btn-2 u-btn-round u-button-style u-custom-color-1 u-radius-50 u-btn-2" value="LOG IN"><b style="font-weight: 700;">LOG IN</b>
-                    </button>
+                    <div style="display: flex; flex-wrap: wrap;">
+                      <button type="submit" form="login_form" id="login_request" class="u-btn u-btn-2 u-btn-round u-button-style u-custom-color-1 u-radius-50 u-btn-2" value="LOG IN"><b style="font-weight: 700;">LOG IN</b>
+                      </button>
+                      <p id="login_error" style="color: red; font-size: 14px;"></p>
+                    </div>
                   </form>
+                  <script> document.getElementById('login_form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    // Retrieve form data
+    var email = document.getElementById('email_input').value;
+    var password = document.getElementById('password_input').value;
+    // Create an empty error message container
+    var errorContainer = document.getElementById('login_error');
+    errorContainer.textContent = '';
+    // Perform client-side validation
+    if (email.trim() === '') {
+        displayErrorMessage('Email is required.');
+        return;
+    }
+    if (password.trim() === '') {
+        displayErrorMessage('Password is required.');
+        return;
+    }
+    // If validation passes, send Fetch request
+    fetch('scripts/login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password)
+    })
+        .then(function(response) {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('An error occurred.');
+            }
+        })
+        .then(function(response) {
+            if (response === 'success') {
+                // User is logged in, redirect to the desired page
+                window.location.href = 'https://quordata.com/Home';
+            } else {
+                // Invalid credentials, display error message
+                displayErrorMessage('Invalid email or password.');
+            }
+        })
+        .catch(function(error) {
+            // Fetch request failed, display error message
+            displayErrorMessage('An error occurred. Please try again.');
+        });
+});
+function displayErrorMessage(message) {
+    var errorContainer = document.getElementById('login_error');
+    errorContainer.textContent = message;
+} </script>
                 </div>
               </div>
             </div>

@@ -115,6 +115,11 @@
               </span>&nbsp;Email Us </a>
           </p>
         </div>
+		<div class="u-clearfix u-custom-html u-custom-html-1">
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="scripts/account_header.js"></script>
+          <div id="loginStatus"></div>
+        </div>
       </div>
     </header>
     <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
@@ -203,11 +208,6 @@
 																								<b>${ave_score}</b>`;
             }
           </script>
-        </div>
-        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
-          <div class="u-container-layout u-container-layout-1">
-            <p class="u-align-center u-text u-text-1"> <?php echo strtoupper($query); ?> </p>
-          </div>
         </div>
         <div class="u-clearfix u-custom-html u-custom-html-2">
           <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-5" value="Day">
@@ -350,7 +350,8 @@
             }
           </script>
         </div>
-        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
+		<div style="display: flex; align-items: flex-start;">
+        <div class="u-palette-1-base u-radius-26 u-shape-round" style="margin-bottom: 60px;">
           <div class="u-container-layout u-container-layout-2">
             <p class="u-align-center u-text u-text-2">
               <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-9" href="Home.html">BACK</a>
@@ -358,10 +359,16 @@
           </div>
         </div>
 		
-        <div class="u-clearfix u-custom-html u-custom-html-3">
+        <div class="u-palette-1-base u-radius-26 u-shape-round">
+            <p class="u-align-center u-text u-text-1"> <?php echo strtoupper($query); ?> </p>
+        </div>
+		
+<div style="display: flex; align-items: center; white-space: nowrap; margin-right: 590px;">
 		<script src="scripts/request_query_subscribe.js"></script>
-<button id="subscribe_button" class="u-container-style u-group u-group-2 u-palette-1-base u-radius-26 u-shape-round u-block-3f69-21" style="border: none; position: absolute; margin-top: 3px; margin-left: 30px">Subscribe</button>
+<button id="subscribe_button" class="u-block-3f69-21 u-palette-1-base u-radius-26 u-shape-round" onmouseover="this.style.color = 'gray';" onmouseout="this.style.color = 'white';" style="border: none; margin-left: 10px; cursor: pointer;">Subscribe</button>
+<p id="response_text" style="display: none; margin-left: 10px; color: #ee9e1c; font-weight: bold;"></p>
 </div>
+		</div>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="sec-6b72">
@@ -569,7 +576,7 @@
                             let relatedTopics = [...new Set(result)];
                             // Remove userQuery from relatedTopics
                             relatedTopics = relatedTopics.filter(topic => topic !== userQuery);
-                            console.log(relatedTopics);
+							
                             // Add related topics as nodes and edges to center node
                             relatedTopics.forEach(function(topic, index) {
                               var angle = (index / relatedTopics.length) * 2 * Math.PI;

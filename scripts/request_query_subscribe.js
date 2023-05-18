@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#subscribe_button').click(function(e) {
-		e.preventDefault();
+		$('#subscribe_button').prop('disabled', true); // Disable the button during the AJAX request
 		// Use AJAX to fetch the login status from a PHP script
 		$.ajax({
 			url: 'scripts/login_status.php',
@@ -31,15 +31,20 @@ $(document).ready(function() {
 						},
 						success: function(response) {
 							console.log(response); // Handle the success response
+							$('#response_text').text(response); // Set the response as the text content
+                            $('#response_text').show(); // Show the response text
+                            $('#subscribe_button').prop('disabled', false); // Enable the button
 						},
 						error: function() {
 							console.log('Error adding subscription.');
+							$('#subscribe_button').prop('disabled', false); // Enable the button in case of an error
 						}
 					});
 				}
 			},
 			error: function() {
 				console.log('Error fetching login status.');
+				$('#subscribe_button').prop('disabled', false); // Enable the button in case of an error
 			}
 		});
 	});

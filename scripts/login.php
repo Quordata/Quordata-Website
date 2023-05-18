@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // If there are no validation errors, proceed with authentication
     if (empty($errors)) {
+		
         // Prepare and execute the query to check user credentials
         $query = "SELECT user_id, email, password FROM accounts WHERE email = :email";
         $stmt = $db->prepare($query);
@@ -49,15 +50,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user['password'])) {
             // Credentials are valid, create user session
             session_start();
-            $_SESSION['email'] = $email;
-            $_SESSION['user_id'] = $user['user_id']; // Store the user ID in the session
+			
+			if (session_id()) {
+			
+				$_SESSION = array(); // Clear any existing session data
+				session_regenerate_id(true); // Regenerate session ID
+				
+				$_SESSION['email'] = $email;
+				$_SESSION['user_id'] = $user['user_id']; // Store the user ID in the session
 
-            // Redirect to a protected page or dashboard
-            header("Location: https://quordata.com/Home");
-            exit();
+				// Return success response to JavaScript code
+				echo 'success';
+			} else {
+				// Failed to start login session
+				echo 'Failed to start login session.';
+			}
         } else {
-            // Invalid credentials, display error message
-            $errors['login'] = 'Invalid email or password.';
+			// Invalid credentials
+			echo 'Invalid email or password.';
         }
     }
 }

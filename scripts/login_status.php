@@ -18,6 +18,7 @@ if (isset($_SESSION['email'])) {
 
 // Set the response header as JSON
 header('Content-Type: application/json');
+header('Vary: Cookie');
 
 // Return the response as JSON
 echo json_encode($response);
