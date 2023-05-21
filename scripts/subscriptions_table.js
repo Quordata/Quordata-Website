@@ -18,13 +18,32 @@ $(document).ready(function() {
                         var tableBody = document.getElementById('subscriptions_tbody');
 
                         for (var i = 0; i < queryNames.length; i++) {
-                            var queryName = queryNames[i];
-                            var row = document.createElement('tr');
-                            var cell = document.createElement('td');
-                            cell.className = 'u-border-3 u-border-grey-dark-1 u-table-cell';
-                            cell.textContent = queryName;
-                            row.appendChild(cell);
-                            tableBody.appendChild(row);
+						  var queryName = queryNames[i];
+						  var row = document.createElement('tr');
+						  var cell = document.createElement('td');
+						  cell.className = 'u-border-3 u-border-grey-dark-1 u-table-cell';
+
+						  // Create the link based on the row value
+						  var link;
+						  if (['Amazon', 'Boeing', 'Lowes', 'McDonalds', 'Nvidia', 'Pfizer', 'Salesforce', 'Starbucks', 'Tesla', 'Walmart'].includes(queryName)) {
+							link = 'https://www.quordata.com/Beta_' + queryName;
+						  } else {
+							link = 'https://www.quordata.com/search_results.php?q=' + queryName;
+						  }
+
+						  // Create the anchor element
+						  var anchor = document.createElement('a');
+						  anchor.href = link;
+						  anchor.textContent = queryName;
+
+						  // Append the anchor element to the cell
+						  cell.appendChild(anchor);
+
+						  // Append the cell to the row
+						  row.appendChild(cell);
+
+						  // Append the row to the table body
+						  tableBody.appendChild(row);
                         }
                     },
                     error: function() {

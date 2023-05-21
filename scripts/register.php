@@ -19,10 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate password (required field and minimum complexity requirements)
     if (empty($password)) {
         $errors['password'] = 'Password is required.';
-    } elseif (strlen($password) < 8) {
-        $errors['password'] = 'Password must be at least 8 characters long.';
-    } elseif (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*_])[A-Za-z\d!@#$%^&*_]{8,}$/", $password)) {
-        $errors['password'] = 'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character.';
     }
 
     // Validate confirm password (required field and match with password)

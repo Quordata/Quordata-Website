@@ -70,20 +70,19 @@
   // Get the URL of the second image result
   $image_url = $response->items[0]->link;
   
-  $cse_news_id = 'c30f6f1d74c714ed6';
+  // Construct the RSS feed URL with the query parameter
+  $rss_feed_url = "https://news.google.com/rss/search?q={$encquery}&hl=en-US&gl=US&ceid=US:en";
   
-    $news_endpoint = "https://www.googleapis.com/customsearch/v1?q={$encquery}&cx={$cse_news_id}&fields=items(title,link)&key={$api_key}";
-	
-// Make a GET request to the API endpoint
-  $json = file_get_contents($news_endpoint);
+  // Fetch the RSS feed
+  $rss = file_get_contents($rss_feed_url);
   
-  // Parse the JSON response
-  $response = json_decode($json);
+  // Parse the RSS feed
+  $feed = simplexml_load_string($rss);
   
-  // Get the first news article and display the headline and URL
-  $article = $response->items[0];
-  $headline = $article->title;
-  $article_url = $article->link;
+  // Get the first news item and display the headline and URL
+  $item = $feed->channel->item[0];
+  $headline = $item->title;
+  $article_url = $item->link;
   
   ?> <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="876" data-image-height="299" title="Home">
           <img src="images/QuordataOrange.png" class="u-logo-image u-logo-image-1">
