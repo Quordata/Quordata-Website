@@ -2,7 +2,7 @@
 $value = $_POST['search'];
 $sleep_val = $_COOKIE['timer_val'];
 
-$queries = array('Amazon', 'Boeing', 'Lowes', 'McDonalds', 'Nvidia', 'Pfizer', 'Salesforce', 'Starbucks', 'Tesla', 'Walmart');
+$queries = array('Amazon');
 
 // If string is empty, do nothing
 if (empty($value)) {

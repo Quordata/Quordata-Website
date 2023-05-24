@@ -25,14 +25,14 @@ $(document).ready(function() {
           var ajaxURL = '';
           var buttonText = '';
 
-          if ($('#subscribe_button').text() === 'Subscribe') {
+          if ($('#subscribe_button').text() === 'SUBSCRIBE') {
             // User is not subscribed, call the query_subscribe.php function
             ajaxURL = 'scripts/query_subscribe.php';
-            buttonText = 'Unsubscribe';
+            buttonText = 'UNSUBSCRIBE';
           } else {
             // User is subscribed, call the query_unsubscribe.php function
             ajaxURL = 'scripts/query_unsubscribe.php';
-            buttonText = 'Subscribe';
+            buttonText = 'SUBSCRIBE';
           }
 
           // Send the query subscription/unsubscription request to the PHP script
@@ -44,12 +44,20 @@ $(document).ready(function() {
               userID: userID
             },
             success: function(response) {
-              console.log(response); // Handle the success response
-              $('#response_text').text(response); // Set the response as the text content
-              $('#response_text').show(); // Show the response text
-              $('#subscribe_button').text(buttonText); // Set the button text
-              $('#subscribe_button').prop('disabled', false); // Enable the button
-            },
+			  console.log(response); // Handle the success response
+			  $('#response_text').text(response); // Set the response as the text content
+			  
+			  var displayValue = 'inline-block'; // Set the desired display value dynamically, e.g., 'inline', 'inline-block', 'none', etc.
+			  $('#response_text').css('display', displayValue); // Set the display property to the desired value
+
+			  // Set the positioning settings
+			  var element = document.getElementById('response_text');
+			  element.style.position = 'absolute'; // Set the positioning to 'absolute'
+			  element.style.left = '140px'; // Set the left position
+			  
+			  $('#subscribe_button').text(buttonText); // Set the button text
+			  $('#subscribe_button').prop('disabled', false); // Enable the button
+			},
             error: function() {
               console.log('Error performing subscription/unsubscription.');
               $('#subscribe_button').prop('disabled', false); // Enable the button in case of an error

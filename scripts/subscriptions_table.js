@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 						  // Create the link based on the row value
 						  var link;
-						  if (['Amazon', 'Boeing', 'Lowes', 'McDonalds', 'Nvidia', 'Pfizer', 'Salesforce', 'Starbucks', 'Tesla', 'Walmart'].includes(queryName)) {
+						  if (['Amazon'].includes(queryName)) {
 							link = 'https://www.quordata.com/Beta_' + queryName;
 						  } else {
 							link = 'https://www.quordata.com/search_results.php?q=' + queryName;

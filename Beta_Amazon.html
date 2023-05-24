@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="Beta_Amazon.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.10.3, nicepage.com">
+    <meta name="generator" content="Nicepage 5.10.8, nicepage.com">
     <meta name="referrer" content="origin">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -38,22 +38,22 @@
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-custom-color-5 u-header u-header" id="sec-1f2c"><a href="Home.html" class="u-image u-logo u-image-1" data-image-width="876" data-image-height="299" title="Home">
+  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-custom-color-5 u-header u-valign-middle u-header" id="sec-1f2c"><a href="Home.html" class="u-align-left u-image u-logo u-image-1" data-image-width="876" data-image-height="299" title="Home">
         <img src="images/QuordataOrange.png" class="u-logo-image u-logo-image-1">
       </a><div class="u-clearfix u-group-elements u-group-elements-1">
-        <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">
+        <p class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-1">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" href="Learn.html"><span class="u-file-icon u-icon u-icon-1"><img src="images/5766916.png" alt=""></span>&nbsp;Learn More
           </a>
         </p>
-        <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-2">
+        <p class="u-align-center u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-2">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-2" href="Team.html"><span class="u-file-icon u-icon u-icon-2"><img src="images/476863.png" alt=""></span>&nbsp;Team
           </a>
         </p>
-        <p class="u-text u-text-3">
+        <p class="u-align-center u-text u-text-3">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-3" href="https://twitter.com/QuordataApp" target="_blank"><span class="u-file-icon u-icon u-icon-3"><img src="images/3128310.png" alt=""></span>&nbsp;Follow Us
           </a>
         </p>
-        <p class="u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-4">
+        <p class="u-align-center u-text u-text-4">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-4" href="mailto:hello@quordata.com"><span class="u-file-icon u-icon u-icon-4"><img src="images/4386562.png" alt=""></span>&nbsp;Email Us
           </a>
         </p>
@@ -64,114 +64,20 @@
       </div></header>
     <section class="u-clearfix u-palette-1-light-3 u-section-1" id="sec-bc09">
       <div class="u-align-left u-clearfix u-sheet u-sheet-1">
-        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
-          <div class="u-container-layout u-container-layout-1">
-            <p class="u-align-center u-text u-text-1">
-              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-1" href="Home.html">BACK</a>
-            </p>
-          </div>
-        </div>
         <div class="u-clearfix u-custom-html u-custom-html-1">
-          <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-2" value="1">
-            <p style="margin-top: -7px;"><b style="">Twitter</b>
-            </p>
-          </button>
-          <button type="submit" onclick="toggle_source(this.id)" id="toggle_reddit" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-3" value="1">
-            <p style="margin-top: -7px;"><b style="">Reddit</b>
-            </p>
-          </button>
-          <button type="submit" onclick="toggle_source(this.id)" id="toggle_youtube" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-4" value="1">
-            <p style="margin-top: -7px;"><b style="">YouTube</b>
-            </p>
-          </button>
-          <button type="submit" onclick="toggle_source(this.id)" id="toggle_news" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-5" value="1">
-            <p style="margin-top: -7px;"><b style="">News</b>
-            </p>
-          </button>
-          <script> function toggle_source(source) {
-		
-		target = document.getElementById(source);
-		
-		twitter_pos_sent = 8;
-		twitter_conf_score = 91;
-		twitter_ave_score = 70;
-		
-		reddit_pos_sent = 3;
-		reddit_conf_score = 83;
-		reddit_ave_score = 80;
-		
-		youtube_pos_sent = 3;
-		youtube_conf_score = 71;
-		youtube_ave_score = 70;
-		
-		news_pos_sent = 5;
-		news_conf_score = 84;
-		news_ave_score = 71;
-		
-		if (target.value == "1") {
-			target.value = "0";
-			target.style.background = "#898989";
-		} else {
-			target.value = "1";
-			target.style.background = "#f1c50e";
-		}
-		
-		twitter_source_state = parseInt(document.getElementById("toggle_twitter").value);
-		reddit_source_state = parseInt(document.getElementById("toggle_reddit").value);
-		youtube_source_state = parseInt(document.getElementById("toggle_youtube").value);
-		news_source_state = parseInt(document.getElementById("toggle_news").value);
-		
-		num_on = twitter_source_state + reddit_source_state + youtube_source_state + news_source_state;
-		
-		if (num_on < 4) {
-			pos_sent = `+${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
-			conf_score = `${Math.round((twitter_conf_score*twitter_source_state + reddit_conf_score*reddit_source_state + youtube_conf_score*youtube_source_state + news_conf_score*news_source_state) / num_on)}%`;
-			ave_score = `${Math.round((twitter_ave_score*twitter_source_state + reddit_ave_score*reddit_source_state + youtube_ave_score*youtube_source_state + news_ave_score*news_source_state) / num_on)}%`;
-		} else if (num_on == 0) {
-			pos_sent = "NaN";
-			conf_score = "NaN";
-			ave_score = "NaN";
-		} else {
-			pos_sent = "+5%";
-			conf_score = "81%";
-			ave_score = "80%";
-		}
-		
-		var positive_scores = document.getElementsByClassName("positive_score");
-		var positive_score = positive_scores[0];
-		
-		positive_score.innerHTML = `<b>${pos_sent}</b>`;
-		
-		var confidence_scores = document.getElementsByClassName("confidence_score");
-		var confidence_score = confidence_scores[0];
-		
-		confidence_score.innerHTML = `<b>${conf_score}</b>`;
-		
-		var average_scores = document.getElementsByClassName("average_score");
-		var average_score = average_scores[0];
-		
-		average_score.innerHTML = `<b>${ave_score}</b>`;
-	} </script>
-        </div>
-        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
-          <div class="u-container-layout u-container-layout-2">
-            <p class="u-align-center u-text u-text-2">AMAZON</p>
-          </div>
-        </div>
-        <div class="u-clearfix u-custom-html u-custom-html-2">
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-6" value="Day">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_day" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-1" value="Day">
             <p style="margin-top: -7px;"><b style="">Day</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-7" value="Week">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_week" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-2" value="Week">
             <p style="margin-top: -7px;"><b style="">Week</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-8" value="Month">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_month" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-3" value="Month">
             <p style="margin-top: -7px;"><b style="">Month</b>
             </p>
           </button>
-          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-9" value="Year">
+          <button type="submit" onclick="set_timeframe(this.value)" id="set_year" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-4" value="Year">
             <p style="margin-top: -7px;"><b style="">Year</b>
             </p>
           </button>
@@ -277,10 +183,17 @@
 		insight_prediction.innerHTML = `<b>Quordata has seen that when the 1-${timeframe.toLowerCase()} sentiment score is positive, price tends to rise the following ${timeframe.toLowerCase()} by 1-5%.</b>`;
 	} </script>
         </div>
-        <div class="u-clearfix u-custom-html u-custom-html-3">
+        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <p class="u-align-center u-text u-text-1">
+              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-alt-color u-btn-5" href="Home.html">BACK</a>
+            </p>
+          </div>
+        </div>
+        <div class="u-clearfix u-custom-html u-custom-html-2">
           <script src="scripts/request_query_subscribe.js"></script>
           <div style="display: flex; align-items: center; white-space: nowrap;">
-            <button id="subscribe_button" class="u-palette-1-base u-radius-26 u-shape-round" onmouseover="this.style.color = 'gray';" onmouseout="this.style.color = 'white';" style="border: none; margin-left: 10px; cursor: pointer;">Subscribe</button>
+            <button id="subscribe_button" class="u-palette-1-base u-radius-26 u-shape-round" onmouseover="this.style.color = 'gray';" onmouseout="this.style.color = 'white';" style="border: none; margin-left: 10px; cursor: pointer; font-weight: bold;">SUBSCRIBE</button>
             <p id="response_text" style="display: none; margin-left: 10px; color: #ee9e1c; font-weight: bold;"></p>
           </div>
           <script> $(document).ready(function() {
@@ -306,7 +219,7 @@
             var isSubscribed = subscriptionResponse.isSubscribed;
             if (isSubscribed) {
               // User is already subscribed, change button text to "Unsubscribe"
-              $('#subscribe_button').text('Unsubscribe');
+              $('#subscribe_button').text('UNSUBSCRIBE');
             }
           },
           error: function() {
@@ -335,10 +248,97 @@ function getQueryNameFromURL() {
 } </script>
         </div>
         <img class="u-image u-image-round u-preserve-proportions u-radius-21 u-image-1" src="images/amazon-logo.jpg" alt="" data-image-width="1500" data-image-height="844">
+        <div class="u-clearfix u-custom-html u-custom-html-3">
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-6" value="1">
+            <p style="margin-top: -7px;"><b style="">Twitter</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_reddit" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-7" value="1">
+            <p style="margin-top: -7px;"><b style="">Reddit</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_youtube" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-8" value="1">
+            <p style="margin-top: -7px;"><b style="">YouTube</b>
+            </p>
+          </button>
+          <button type="submit" onclick="toggle_source(this.id)" id="toggle_news" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-9" value="1">
+            <p style="margin-top: -7px;"><b style="">News</b>
+            </p>
+          </button>
+          <script> function toggle_source(source) {
+		
+		target = document.getElementById(source);
+		
+		twitter_pos_sent = 8;
+		twitter_conf_score = 91;
+		twitter_ave_score = 70;
+		
+		reddit_pos_sent = 3;
+		reddit_conf_score = 83;
+		reddit_ave_score = 80;
+		
+		youtube_pos_sent = 3;
+		youtube_conf_score = 71;
+		youtube_ave_score = 70;
+		
+		news_pos_sent = 5;
+		news_conf_score = 84;
+		news_ave_score = 71;
+		
+		if (target.value == "1") {
+			target.value = "0";
+			target.style.background = "#898989";
+		} else {
+			target.value = "1";
+			target.style.background = "#f1c50e";
+		}
+		
+		twitter_source_state = parseInt(document.getElementById("toggle_twitter").value);
+		reddit_source_state = parseInt(document.getElementById("toggle_reddit").value);
+		youtube_source_state = parseInt(document.getElementById("toggle_youtube").value);
+		news_source_state = parseInt(document.getElementById("toggle_news").value);
+		
+		num_on = twitter_source_state + reddit_source_state + youtube_source_state + news_source_state;
+		
+		if (num_on < 4) {
+			pos_sent = `+${Math.round((twitter_pos_sent*twitter_source_state + reddit_pos_sent*reddit_source_state + youtube_pos_sent*youtube_source_state + news_pos_sent*news_source_state) / num_on)}%`;
+			conf_score = `${Math.round((twitter_conf_score*twitter_source_state + reddit_conf_score*reddit_source_state + youtube_conf_score*youtube_source_state + news_conf_score*news_source_state) / num_on)}%`;
+			ave_score = `${Math.round((twitter_ave_score*twitter_source_state + reddit_ave_score*reddit_source_state + youtube_ave_score*youtube_source_state + news_ave_score*news_source_state) / num_on)}%`;
+		} else if (num_on == 0) {
+			pos_sent = "NaN";
+			conf_score = "NaN";
+			ave_score = "NaN";
+		} else {
+			pos_sent = "+5%";
+			conf_score = "81%";
+			ave_score = "80%";
+		}
+		
+		var positive_scores = document.getElementsByClassName("positive_score");
+		var positive_score = positive_scores[0];
+		
+		positive_score.innerHTML = `<b>${pos_sent}</b>`;
+		
+		var confidence_scores = document.getElementsByClassName("confidence_score");
+		var confidence_score = confidence_scores[0];
+		
+		confidence_score.innerHTML = `<b>${conf_score}</b>`;
+		
+		var average_scores = document.getElementsByClassName("average_score");
+		var average_score = average_scores[0];
+		
+		average_score.innerHTML = `<b>${ave_score}</b>`;
+	} </script>
+        </div>
+        <div class="u-container-style u-group u-palette-1-base u-radius-26 u-shape-round u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <p class="u-align-center u-text u-text-2">AMAZON</p>
+          </div>
+        </div>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="sec-6b72">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
           <div class="u-gutter-0 u-layout">
             <div class="u-layout-col">
@@ -365,9 +365,9 @@ function getQueryNameFromURL() {
                       <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-2">
                         <div class="u-container-layout u-container-layout-4">
                           <p class="u-text u-text-body-color u-text-default u-text-4"> Quordata believes the biggest driver of this <span style="font-weight: 700;">positive </span>sentiment comes from <span style="font-weight: 700;">news that Amazon has expanded its reach into the UAE with the Middle Eastern branch of its AWS offering</span>&nbsp;(<a href="https://techmgzn.com/amazon-web-services-launches-in-the-united-arab-emirates/amp/" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" target="_blank">Link</a>).
-                          </p><span class="u-file-icon u-icon u-icon-3"><img src="images/4395935.png" alt=""></span>
+                          </p>
                         </div>
-                      </div>
+                      </div><span class="u-file-icon u-icon u-icon-3"><img src="images/4395935.png" alt=""></span>
                     </div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-17 u-white u-layout-cell-3">
@@ -388,7 +388,7 @@ function getQueryNameFromURL() {
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-5">
                         <div class="u-container-layout u-container-layout-8"><span class="u-file-icon u-icon u-icon-6"><img src="images/456115.png" alt=""></span>
-                          <p class="confidence_score u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xl u-text u-text-body-color u-text-10">81%</p>
+                          <p class="confidence_score u-align-left u-text u-text-body-color u-text-10">81%</p>
                           <p class="u-align-left u-text u-text-body-color u-text-11">Confident in Sentiment Score</p>
                         </div>
                       </div>
@@ -404,7 +404,7 @@ function getQueryNameFromURL() {
               </div>
               <div class="u-size-20">
                 <div class="u-layout-row">
-                  <div class="u-container-style u-custom-color-5 u-hidden-xs u-layout-cell u-size-6 u-layout-cell-4">
+                  <div class="u-container-style u-custom-color-5 u-layout-cell u-size-6 u-layout-cell-4">
                     <div class="u-container-layout u-container-layout-10"></div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-17 u-white u-layout-cell-5">
@@ -418,7 +418,7 @@ function getQueryNameFromURL() {
                       </div>
                       <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-8">
                         <div class="u-container-layout u-container-layout-13">
-                          <p class="insight_prediction u-text u-text-body-color u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xl u-text-16">Quordata has seen that when the 1-month sentiment score is positive, price tends to rise the following month by 1-5%.&nbsp;</p>
+                          <p class="insight_prediction u-text u-text-body-color u-text-default u-text-16">Quordata has seen that when the 1-month sentiment score is positive, price tends to rise the following month by 1-5%.&nbsp;</p>
                         </div>
                       </div><span class="u-file-icon u-icon u-icon-9"><img src="images/4175914.png" alt=""></span>
                     </div>
@@ -435,7 +435,7 @@ function getQueryNameFromURL() {
               </div>
               <div class="u-size-20">
                 <div class="u-layout-row">
-                  <div class="u-container-style u-custom-color-5 u-hidden-xs u-layout-cell u-size-6 u-layout-cell-7">
+                  <div class="u-container-style u-custom-color-5 u-layout-cell u-size-6 u-layout-cell-7">
                     <div class="u-container-layout u-container-layout-15"></div>
                   </div>
                   <div class="u-container-style u-layout-cell u-size-28 u-white u-layout-cell-8">
@@ -564,7 +564,7 @@ function getQueryNameFromURL() {
         let images = ['images/twitter_logo.png', 'images/yahoofinance_logo.png', 'images/reddit_logo.png', 'images/motley_logo.webp', 'images/news_logo.png'];
 		  
         const svg = d3.select('#sources-treemap').append('svg').attr('width', 400).attr('height', 520);
-        const treemapLayout = (data, labels, images) => d3.treemap().tile(d3.treemapResquarify).size([400, 520]).padding(1).round(true)(d3.hierarchy({
+        const treemapLayout = (data, labels, images) => d3.treemap().tile(d3.treemapSquarify).size([460, 520]).padding(1).round(false)(d3.hierarchy({
             values: data.map((value, i) => ({
               value,
               index: i
@@ -573,23 +573,36 @@ function getQueryNameFromURL() {
           (d) => d.values).sum((d) => d.value));
         const treemapData = treemapLayout(data, labels, images);
         const treemapContainer = d3.select("#sources-treemap");
-        const treemapSquares = treemapContainer.selectAll("div").data(treemapData.leaves()).join("div").attr("id", (d) => labels[d.data.index]).attr("style", (d) => `
-          position: absolute;
-          left: ${d.x0}px;
-          top: ${d.y0}px;
-          width: ${d.x1 - d.x0}px;
-          height: ${d.y1 - d.y0}px;
-          background-color: #222;
-          overflow: hidden;
-        `);
-        treemapSquares.append("img").attr("src", (d) => images[d.data.index]).style("width", "100%").style("height", "100%");;
-        treemapSquares.append("div").attr("style", (d) => `
+        const treemapSquares = treemapContainer.selectAll("div").data(treemapData.leaves()).join("div").attr("id", (d) => labels[d.data.index]).attr("style", (d) => {
+          let backgroundColor = "#ccc"; // Default background color
+          // Set background color based on label
+          if (labels[d.data.index] === "Twitter") {
+            backgroundColor = "#94c7cb";
+          } else if (labels[d.data.index] === "Yahoo Finance") {
+            backgroundColor = "#cdbcfc";
+          } else if (labels[d.data.index] === "Reddit") {
+            backgroundColor = "#ff8f66";
+          } else if (labels[d.data.index] === "Motley Fool") {
+            backgroundColor = "#f1babc";
+          }
+          return `
+            position: absolute;
+            left: ${d.x0}px;
+            top: ${d.y0}px;
+            width: ${d.x1 - d.x0}px;
+            height: ${d.y1 - d.y0}px;
+            background-color: ${backgroundColor};
+            overflow: hidden;
+          `;
+        });
+        
+        treemapSquares.append("img").attr("src", (d) => images[d.data.index]).style("max-width", "100%").style("max-height", "100%").style("object-fit", "contain").style("position", "absolute").style("top", "50%").style("left", "50%").style("transform", "translate(-50%, -50%)");
+        treemapSquares.append("div").attr("class", "source_label").attr("style", (d) => `
                     padding: 5px;
                         box-sizing: border-box;
     font-size: ${Math.min((d.x1 - d.x0) / 8, 14)}px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -597,9 +610,13 @@ function getQueryNameFromURL() {
                     height: 100%;
                     display: flex;
                     color: #fff;
+    word-wrap: break-word; /* Enable word wrapping */
                 `).text((d) => `${labels[d.data.index]}\n${data[d.data.index]}%`);
         treemapSquares.on('click', function(d) {
-          var source = 'toggle_news'
+          var source = 'toggle_news';
+  		  var square = d3.select(this);
+  		  var source_label = square.select('.source_label'); // Select the inner div element with the class 'source_label'
+  
           if (this.id == 'Twitter') {
             source = 'toggle_twitter';
           } else if (this.id == 'Reddit') {
@@ -612,7 +629,24 @@ function getQueryNameFromURL() {
             source = 'toggle_youtube';
           }
           toggle_source(source);
-        });
+			
+  // Toggle background color, text color, and border
+  if (square.classed('toggled')) {
+    // Square is already toggled, reset the style
+    square.style('background-color', square.attr('data-original-bg'))
+      .style('border', null)
+      .classed('toggled', false);
+    source_label.style('color', square.attr('data-original-color'));
+  } else {
+    // Square is not toggled, apply the new style
+    square.attr('data-original-bg', square.style('background-color')) // Store the original background color
+      .attr('data-original-color', source_label.style('color')); // Store the original text color
+    square.style('background-color', 'white')
+      .style('border', '2px solid black')
+      .classed('toggled', true);
+    source_label.style('color', 'black');
+  }
+});
       }
     })
   }); </script>
@@ -623,6 +657,76 @@ function getQueryNameFromURL() {
               </div>
             </div>
           </div>
+        </div>
+        <div class="u-clearfix u-custom-html u-custom-html-4">
+          <style> #video-overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		justify-content: center;
+		align-items: center;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	#video-overlay iframe {
+		width: 80%;
+		height: 80%;
+	} </style>
+          <div id="video-overlay">
+            <iframe id="video-iframe" src="https://www.youtube.com/embed/1OPV6rW1YMI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+          </div>
+          <script> document.addEventListener('click', function(event) {
+	const isClickInsideVideo = videoIframe.contains(event.target);
+	const isClickInsideButton = playButton.contains(event.target);
+	if (!isClickInsideVideo && !isClickInsideButton) {
+		videoOverlay.style.display = 'none';
+	}
+});
+$(document).ready(function() {
+	// Use AJAX to fetch the login status from a PHP script
+	$.ajax({
+		url: 'scripts/login_status.php',
+		method: 'GET',
+		success: function(response) {
+			var isLoggedIn = response.isLoggedIn;
+			var userID = response.userID;
+			if (isLoggedIn) {
+				// Request PHP script to check if this is the user's first time opening a dashboard
+				$.ajax({
+					url: 'scripts/check_first_time.php',
+					method: 'POST',
+					data: {
+						userID: userID
+					},
+					success: function(response) {
+						if (response == "1") {
+							// First time user is viewing a dashboard, display tutorial
+							videoOverlay.style.display = 'flex';
+						}
+					},
+					error: function() {
+						console.log('Error checking first time status');
+					}
+				});
+			}
+		},
+		error: function() {
+			console.log('Error fetching login status.');
+		}
+	});
+}); </script>
+        </div>
+        <div class="u-clearfix u-custom-html u-custom-html-5">
+          <button id="start-tutorial" class="u-palette-1-base u-radius-26 u-shape-round" onmouseover="this.style.color = 'gray';" onmouseout="this.style.color = 'white';" style="border: none; margin-left: 10px; cursor: pointer; font-weight: bold;">TUTORIAL</button>
+          <script> const playButton = document.getElementById('start-tutorial');
+	const videoOverlay = document.getElementById('video-overlay');
+	const videoIframe = document.getElementById('video-iframe');
+	playButton.addEventListener('click', function() {
+		videoOverlay.style.display = 'flex';
+	}); </script>
         </div>
       </div>
       
