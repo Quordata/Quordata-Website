@@ -1,0 +1,599 @@
+{
+    "type": "line",
+    "data": {
+        "datasets": [
+            {
+                "label": "Og",
+                "data": [
+                    20.2,
+                    81.5,
+                    19.1,
+                    40.8,
+                    38.3,
+                    38.6,
+                    82.1,
+                    18.3,
+                    19.7,
+                    20.5,
+                    40.6,
+                    17.2,
+                    18.8,
+                    18.4,
+                    19.5,
+                    81.6,
+                    80.7,
+                    17.7,
+                    59.6,
+                    20.5,
+                    78.8,
+                    79.8,
+                    20.5,
+                    40.3,
+                    40.3,
+                    59.9,
+                    84.3,
+                    87.2,
+                    80.6,
+                    79.9
+                ],
+                "borderColor": "rgb(11, 219, 136)",
+                "backgroundColor": "rgba(11, 219, 136, 0.5)",
+                "yAxisID": "Og"
+            },
+            {
+                "label": "Sum",
+                "data": [
+                    46.7,
+                    58.9,
+                    38.9,
+                    44.1,
+                    50.0,
+                    50.0,
+                    51.9,
+                    38.3,
+                    42.6,
+                    46.2,
+                    47.1,
+                    42.7,
+                    43.4,
+                    40.4,
+                    39.1,
+                    58.0,
+                    60.0,
+                    35.7,
+                    51.0,
+                    45.2,
+                    52.3,
+                    53.6,
+                    47.7,
+                    46.6,
+                    48.7,
+                    53.8,
+                    66.7,
+                    73.4,
+                    57.5,
+                    57.1
+                ],
+                "borderColor": "rgb(11, 153, 219)",
+                "backgroundColor": "rgba(11, 153, 219, 0.5)",
+                "yAxisID": "Sum"
+            },
+            {
+                "label": "OgSub",
+                "data": [
+                    37.3,
+                    66.2,
+                    34.1,
+                    40.8,
+                    38.3,
+                    38.6,
+                    65.5,
+                    32.9,
+                    35.7,
+                    37.6,
+                    40.6,
+                    32.4,
+                    34.8,
+                    33.5,
+                    34.7,
+                    66.1,
+                    65.4,
+                    31.5,
+                    59.6,
+                    37.4,
+                    61.2,
+                    62.7,
+                    37.9,
+                    40.3,
+                    40.3,
+                    59.9,
+                    71.6,
+                    77.0,
+                    64.7,
+                    63.7
+                ],
+                "borderColor": "rgb(255, 23, 185)",
+                "backgroundColor": "rgba(255, 23, 185, 0.5)",
+                "yAxisID": "OgSub"
+            },
+            {
+                "label": "OgSpamFree",
+                "data": [
+                    19.8,
+                    81.4,
+                    19.3,
+                    40.8,
+                    19.9,
+                    79.9,
+                    82.7,
+                    18.4,
+                    19.2,
+                    20.5,
+                    40.4,
+                    16.9,
+                    18.6,
+                    18.1,
+                    19.5,
+                    81.5,
+                    81.0,
+                    17.3,
+                    59.8,
+                    20.2,
+                    78.8,
+                    80.0,
+                    20.5,
+                    40.3,
+                    40.0,
+                    59.5,
+                    83.1,
+                    86.6,
+                    80.1,
+                    80.2
+                ],
+                "borderColor": "rgb(33, 250, 200)",
+                "backgroundColor": "rgba(33, 250, 200, 0.5)",
+                "yAxisID": "OgSpamFree",
+                "hidden": true
+            },
+            {
+                "label": "SumSpamFree",
+                "data": [
+                    44.9,
+                    59.3,
+                    40.0,
+                    44.1,
+                    48.1,
+                    51.0,
+                    52.9,
+                    38.8,
+                    41.5,
+                    46.8,
+                    47.0,
+                    41.8,
+                    43.3,
+                    40.2,
+                    39.1,
+                    57.4,
+                    60.2,
+                    35.4,
+                    51.0,
+                    45.1,
+                    52.3,
+                    54.0,
+                    47.7,
+                    46.5,
+                    48.2,
+                    52.4,
+                    64.0,
+                    72.8,
+                    56.8,
+                    57.7
+                ],
+                "borderColor": "rgb(33, 200, 250)",
+                "backgroundColor": "rgba(33, 200, 250, 0.5)",
+                "yAxisID": "SumSpamFree",
+                "hidden": true
+            },
+            {
+                "label": "OgSubSpamFree",
+                "data": [
+                    36.3,
+                    66.2,
+                    34.6,
+                    40.8,
+                    37.1,
+                    62.3,
+                    66.5,
+                    33.1,
+                    34.8,
+                    37.8,
+                    40.4,
+                    31.8,
+                    34.4,
+                    33.1,
+                    34.7,
+                    65.9,
+                    65.8,
+                    31.0,
+                    59.8,
+                    37.0,
+                    61.2,
+                    63.1,
+                    37.9,
+                    40.3,
+                    40.0,
+                    59.5,
+                    69.5,
+                    76.2,
+                    63.9,
+                    64.2
+                ],
+                "borderColor": "rgb(255, 70, 200)",
+                "backgroundColor": "rgba(255, 70, 200, 0.5)",
+                "yAxisID": "OgSubSpamFree",
+                "hidden": true
+            },
+            {
+                "label": "Price",
+                "data": [
+                    256.4700012207031,
+                    254.509994506836,
+                    254.509994506836,
+                    254.509994506836,
+                    254.509994506836,
+                    254.38999938964844,
+                    258.4200134277344,
+                    260.0799865722656,
+                    259.5199890136719,
+                    259.5199890136719,
+                    259.5199890136719,
+                    260.3699951171875,
+                    254.3300018310547,
+                    255.72000122070312,
+                    253.47000122070312,
+                    254.91000366210932,
+                    254.91000366210932,
+                    254.91000366210932,
+                    257.010009765625,
+                    255.3999938964844,
+                    251.0800018310547,
+                    247.94000244140625,
+                    245.9499969482422,
+                    245.9499969482422,
+                    245.9499969482422,
+                    243.759994506836,
+                    236.6999969482422,
+                    236.94000244140625,
+                    234.3999938964844,
+                    230.7400054931641
+                ],
+                "borderColor": "rgb(3, 86, 252)",
+                "backgroundColor": "rgba(3, 86, 252, 0.5)",
+                "yAxisID": "price",
+                "borderWidth": 8
+            },
+            {
+                "label": "Volume",
+                "type": "bar",
+                "data": [
+                    2577800.0,
+                    1791300.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    2645700.0,
+                    4185200.0,
+                    2448900.0,
+                    2007000.0,
+                    0.0,
+                    0.0,
+                    2204300.0,
+                    2604900.0,
+                    2745200.0,
+                    2289500.0,
+                    4302000.0,
+                    0.0,
+                    0.0,
+                    2195800.0,
+                    2140200.0,
+                    2438800.0,
+                    2300500.0,
+                    2671700.0,
+                    0.0,
+                    0.0,
+                    3179100.0,
+                    4193800.0,
+                    4202400.0,
+                    3053200.0,
+                    3628600.0
+                ],
+                "borderColor": "rgb(186, 37, 219)",
+                "backgroundColor": "rgba(186, 37, 219, 0.5)",
+                "yAxisID": "volume",
+                "grouped": false
+            },
+            {
+                "label": "Tweets",
+                "type": "bar",
+                "data": [
+                    61,
+                    45,
+                    54,
+                    59,
+                    54,
+                    50,
+                    54,
+                    60,
+                    61,
+                    52,
+                    51,
+                    62,
+                    53,
+                    47,
+                    46,
+                    56,
+                    50,
+                    49,
+                    50,
+                    52,
+                    44,
+                    56,
+                    65,
+                    296,
+                    149,
+                    130,
+                    180,
+                    197,
+                    187,
+                    197
+                ],
+                "borderColor": "rgb(255, 170, 0)",
+                "backgroundColor": "rgba(225, 170, 0, 0.5)",
+                "yAxisID": "tweets"
+            },
+            {
+                "label": "Tweets-SpamFree",
+                "type": "bar",
+                "data": [
+                    59,
+                    43,
+                    50,
+                    59,
+                    52,
+                    48,
+                    52,
+                    58,
+                    59,
+                    47,
+                    50,
+                    61,
+                    52,
+                    46,
+                    46,
+                    54,
+                    49,
+                    48,
+                    49,
+                    51,
+                    44,
+                    50,
+                    65,
+                    288,
+                    138,
+                    123,
+                    154,
+                    182,
+                    176,
+                    188
+                ],
+                "borderColor": "rgb(119, 255, 0)",
+                "backgroundColor": "rgba(119, 255, 0, 0.5)",
+                "yAxisID": "tweets",
+                "hidden": true
+            }
+        ],
+        "labels": [
+            "2022-09-01",
+            "2022-09-02",
+            "2022-09-03",
+            "2022-09-04",
+            "2022-09-05",
+            "2022-09-06",
+            "2022-09-07",
+            "2022-09-08",
+            "2022-09-09",
+            "2022-09-10",
+            "2022-09-11",
+            "2022-09-12",
+            "2022-09-13",
+            "2022-09-14",
+            "2022-09-15",
+            "2022-09-16",
+            "2022-09-17",
+            "2022-09-18",
+            "2022-09-19",
+            "2022-09-20",
+            "2022-09-21",
+            "2022-09-22",
+            "2022-09-23",
+            "2022-09-24",
+            "2022-09-25",
+            "2022-09-26",
+            "2022-09-27",
+            "2022-09-28",
+            "2022-09-29",
+            "2022-09-30"
+        ]
+    },
+    "options": {
+        "plugins": {
+            "title": {
+                "display": true,
+                "text": "McDonald_s"
+            },
+            "subtitle": {
+                "display": true,
+                "text": "Sentiment Price Correlation"
+            },
+            "tooltip": {
+                "mode": "index",
+                "intersect": true,
+                "xAlign": "center",
+                "yAlign": "top",
+                "position": "nearest"
+            }
+        },
+        "scales": {
+            "x": {
+                "type": "time",
+                "time": {
+                    "unit": "day"
+                },
+                "min": "2022-09-01",
+                "max": "2022-09-30"
+            },
+            "price": {
+                "type": "linear",
+                "display": "true",
+                "position": "left",
+                "min": 173,
+                "max": 325.0,
+                "title": {
+                    "display": true,
+                    "text": "Price"
+                },
+                "grid": {
+                    "drawOnChartArea": false
+                }
+            },
+            "sentimentScale": {
+                "type": "linear",
+                "display": "true",
+                "position": "right",
+                "min": 0,
+                "max": 300,
+                "ticks": {
+                    "minRotation": 0
+                },
+                "title": {
+                    "display": true,
+                    "text": "Sentiment Score"
+                },
+                "grid": {
+                    "drawOnChartArea": true
+                }
+            },
+            "volume": {
+                "type": "linear",
+                "display": false,
+                "min": 0,
+                "max": 21510000,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "tweets": {
+                "type": "linear",
+                "reverse": true,
+                "display": false,
+                "min": 0,
+                "max": 2960,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "Og": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "Sum": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "OgSub": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "OgSpamFree": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "SumSpamFree": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "OgSubSpamFree": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            }
+        }
+    }
+}

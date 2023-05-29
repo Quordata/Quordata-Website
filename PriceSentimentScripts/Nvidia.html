@@ -1,0 +1,181 @@
+<div>
+<script src="../scripts/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script src="../chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
+
+<div>
+    <div id="legend-container" style="background-color: #06153d"></div>
+    <div id="legend-container" style="background-color: #06153d"></div>
+    <canvas id="myChart" width="400" height="270"></canvas>
+</div>
+
+<style>
+        #myChart {
+            background-color: #06153d;
+        }
+</style>
+
+<script>
+	const name = "Nvidia";
+	const url = `../DarkGraphJsons/${name}Graph.json`;
+	$.getJSON(url, function(data) {
+    		console.log(data);
+    		var ctx = myChart.getContext('2d');
+            const down = (ctx) => {
+                var prev = ctx.p0.parsed.y;
+                var next = ctx.p1.parsed.y;
+                if (prev < next) {return 'rgb(0, 200, 0)';}
+                else if (prev > next) {return 'rgb(200, 0, 0)';}
+                else {return undefined}
+            }
+    		
+    		console.log(data['data']['datasets'][2]['label']);
+    		
+    		data['data']['datasets'][2]['segment'] = {
+    		    borderColor: ctx => down(ctx)
+    		}
+    		
+        const getOrCreateLegendList = (chart, id) => {
+            console.log(id)
+            const legendContainer = document.getElementById(id);
+            console.log(legendContainer)
+            let listContainer = legendContainer.querySelector('ul');
+
+            if (!listContainer) {
+                listContainer = document.createElement('ul');
+                listContainer.style.display = 'flex';
+                listContainer.style.flexDirection = 'row';
+                listContainer.style.margin = 0;
+                listContainer.style.padding = 0;
+
+                legendContainer.appendChild(listContainer);
+            }
+
+            return listContainer;
+        };
+
+        const htmlLegendPlugin = {
+            id: 'htmlLegend',
+            afterUpdate(chart, args, options) {
+                console.log(options.containerID)
+                console.log(options.Target)
+                const ul = getOrCreateLegendList(chart, options.containerID);
+
+                // Remove old legend items
+                while (ul.firstChild) {
+                    ul.firstChild.remove();
+                }
+
+                // Reuse the built-in legendItems generator
+                const items = chart.options.plugins.legend.labels.generateLabels(chart);
+
+                items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.style.alignItems = 'center';
+                    li.style.cursor = 'pointer';
+                    li.style.display = 'flex';
+                    li.style.flexDirection = 'row';
+                    li.style.marginLeft = '10px';
+
+                    li.onclick = () => {
+                        const {type} = chart.config;
+                        if (type === 'pie' || type === 'doughnut') {
+                            // Pie and doughnut charts only have a single dataset and visibility is per item
+                            chart.toggleDataVisibility(item.index);
+                        } else {
+                            chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
+                        }
+                        chart.update();
+                    };
+
+                    // Color box
+                    console.log(item)
+                    const boxSpan = document.createElement('span');
+                    
+                    boxSpan.style.borderWidth = item.lineWidth + 'px';
+                    boxSpan.style.display = 'inline-block';
+                    boxSpan.style.height = '20px';
+                    boxSpan.style.marginRight = '10px';
+                    boxSpan.style.width = '20px';
+                    
+                    var dashedItem = false;
+                    
+                    if (item.lineDash){
+                        if (item.lineDash.length !== 0){
+                            dashedItem = true;
+                        }
+                    }
+                    
+                    
+                    if (dashedItem){
+                        boxSpan.style.position = 'relative';
+                        const dashOne = document.createElement('div');
+                        dashOne.style.position = 'absolute';
+                        dashOne.style.top = '8px';
+                        dashOne.style.height = '2px';
+                        dashOne.style.width = '5px';
+                        dashOne.style.background = item.fillStyle;
+                        
+                        const dashTwo = document.createElement('div');
+                        dashTwo.style.position = 'absolute';
+                        dashTwo.style.top = '8px';
+                        dashTwo.style.left = '7px';
+                        dashTwo.style.height = '2px';
+                        dashTwo.style.width = '5px';
+                        dashTwo.style.background = item.fillStyle;
+                        
+                        const dashThree = document.createElement('div');
+                        dashThree.style.position = 'absolute';
+                        dashThree.style.top = '8px';
+                        dashThree.style.left = '14px';
+                        dashThree.style.height = '2px';
+                        dashThree.style.width = '5px';
+                        dashThree.style.background = item.fillStyle;
+                        
+                        boxSpan.appendChild(dashOne);
+                        boxSpan.appendChild(dashTwo);
+                        boxSpan.appendChild(dashThree);
+                    }
+                    
+                    else {
+                        boxSpan.style.background = item.fillStyle;
+                    
+                        if (item.text === "Price") {
+                            boxSpan.style.backgroundImage = "linear-gradient(to bottom, rgba(0, 200, 0, 0.5) 0%, rgba(0, 200, 0, 0.5) 40%, rgba(200, 200, 200, 0.5) 40%, rgba(200, 200, 200, 0.5) 60%, rgba(200, 0, 0, 0.5) 60%)";
+                        }
+                        boxSpan.style.borderColor = item.strokeStyle;
+                        
+                        if (item.text === "Non-Trading Days") {
+                            console.log("Red")
+                            boxSpan.style.borderColor = "rgba(200, 0, 0, 0.5)";
+                            boxSpan.style.borderWidth = "0.5px";
+                            boxSpan.style.borderStyle = "solid";
+                        }
+                    }
+                    
+
+
+                    // Text
+                    const textContainer = document.createElement('p');
+                    textContainer.style.color = item.fontColor;
+                    textContainer.style.fontSize = 12;
+                    textContainer.style.margin = 0;
+                    textContainer.style.padding = 0;
+                    textContainer.style.textDecoration = item.hidden ? 'line-through' : '';
+
+                    const text = document.createTextNode(item.text);
+                    textContainer.appendChild(text);
+
+                    li.appendChild(boxSpan);
+                    li.appendChild(textContainer);
+                    ul.appendChild(li);
+                });
+            }
+        };
+
+data["plugins"] = [htmlLegendPlugin]
+    		
+    		var chart = new Chart(ctx, data);
+    	});
+</script>
+</div>

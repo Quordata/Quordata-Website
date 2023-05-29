@@ -35,6 +35,7 @@ $(document).ready(function() {
 						  var anchor = document.createElement('a');
 						  anchor.href = link;
 						  anchor.textContent = queryName;
+						  anchor.style.color = 'white';
 
 						  // Append the anchor element to the cell
 						  cell.appendChild(anchor);

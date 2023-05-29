@@ -1,0 +1,319 @@
+{
+    "type": "line",
+    "data": {
+        "datasets": [
+            {
+                "label": "Sentiment",
+                "data": [
+                    82.3,
+                    86.9,
+                    90.6,
+                    86.3,
+                    83.9,
+                    81.0,
+                    57.9,
+                    60.0,
+                    81.7,
+                    86.7,
+                    59.7,
+                    89.6,
+                    83.3,
+                    59.1,
+                    85.1,
+                    82.4,
+                    59.1,
+                    82.9,
+                    59.7,
+                    61.7,
+                    84.9,
+                    85.1,
+                    84.4,
+                    81.7,
+                    80.7,
+                    84.3,
+                    61.0,
+                    61.2,
+                    86.1,
+                    82.2
+                ],
+                "borderColor": "rgb(252, 152, 3)",
+                "backgroundColor": "rgb(252, 152, 3)",
+                "yAxisID": "OgSpamFree",
+                "borderDash": [
+                    10,
+                    5
+                ]
+            },
+            {
+                "label": "Volume",
+                "type": "bar",
+                "data": [
+                    7556800,
+                    10334100,
+                    0,
+                    0,
+                    0,
+                    11062800,
+                    9946800,
+                    7721100,
+                    7094600,
+                    0,
+                    0,
+                    9078900,
+                    16033600,
+                    24320600,
+                    11052400,
+                    11984000,
+                    0,
+                    0,
+                    6287000,
+                    6560000,
+                    8806800,
+                    9953000,
+                    7152000,
+                    0,
+                    0,
+                    7583500,
+                    8628800,
+                    7850800,
+                    6881500,
+                    7735100
+                ],
+                "borderColor": "rgb(186, 37, 219)",
+                "backgroundColor": "rgba(186, 37, 219, 0.5)",
+                "yAxisID": "volume",
+                "grouped": false
+            },
+            {
+                "label": "Price",
+                "data": [
+                    85.4000015258789,
+                    82.94000244140625,
+                    82.94000244140625,
+                    82.94000244140625,
+                    82.94000244140625,
+                    84.5199966430664,
+                    88.30999755859375,
+                    89.45999908447266,
+                    88.69000244140625,
+                    88.69000244140625,
+                    88.69000244140625,
+                    89.06999969482422,
+                    87.83999633789062,
+                    92.6999969482422,
+                    92.22000122070312,
+                    91.30999755859376,
+                    91.30999755859376,
+                    91.30999755859376,
+                    92.13999938964844,
+                    90.79000091552734,
+                    88.5999984741211,
+                    84.69999694824219,
+                    84.16999816894531,
+                    84.16999816894531,
+                    84.16999816894531,
+                    84.80999755859375,
+                    84.27999877929688,
+                    87.11000061035156,
+                    86.56999969482422,
+                    84.26000213623047
+                ],
+                "borderColor": "rgba(100, 100, 100, 0.5)",
+                "backgroundColor": "rgba(100, 100, 100, 0.5)",
+                "yAxisID": "price",
+                "borderWidth": 5,
+                "pointRadius": 1,
+                "pointHitRadius": 16,
+                "pointBorderColor": "rgb(100, 100, 100)",
+                "pointBackgroundColor": "rgb(100, 100, 100)"
+            },
+            {
+                "label": "Non-Trading Days",
+                "type": "bar",
+                "data": [
+                    0,
+                    0,
+                    1,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "borderColor": "rgba(0,0,0,0)",
+                "backgroundColor": "rgba(1, 1, 1, 0.1)",
+                "yAxisID": "non-trading-day",
+                "grouped": false,
+                "barPercentage": 1.3
+            }
+        ],
+        "labels": [
+            "2022-09-01",
+            "2022-09-02",
+            "2022-09-03",
+            "2022-09-04",
+            "2022-09-05",
+            "2022-09-06",
+            "2022-09-07",
+            "2022-09-08",
+            "2022-09-09",
+            "2022-09-10",
+            "2022-09-11",
+            "2022-09-12",
+            "2022-09-13",
+            "2022-09-14",
+            "2022-09-15",
+            "2022-09-16",
+            "2022-09-17",
+            "2022-09-18",
+            "2022-09-19",
+            "2022-09-20",
+            "2022-09-21",
+            "2022-09-22",
+            "2022-09-23",
+            "2022-09-24",
+            "2022-09-25",
+            "2022-09-26",
+            "2022-09-27",
+            "2022-09-28",
+            "2022-09-29",
+            "2022-09-30"
+        ]
+    },
+    "options": {
+        "plugins": {
+            "title": {
+                "display": true,
+                "text": "Starbucks"
+            },
+            "subtitle": {
+                "display": true,
+                "text": "Sentiment Price Correlation"
+            },
+            "tooltip": {
+                "mode": "index",
+                "intersect": true,
+                "xAlign": "center",
+                "yAlign": "top",
+                "position": "nearest"
+            }
+        },
+        "scales": {
+            "x": {
+                "type": "time",
+                "time": {
+                    "unit": "day"
+                },
+                "min": "2022-09-01",
+                "max": "2022-09-30"
+            },
+            "price": {
+                "type": "linear",
+                "display": "true",
+                "position": "left",
+                "min": 62,
+                "max": 115,
+                "title": {
+                    "display": true,
+                    "text": "Price"
+                },
+                "grid": {
+                    "drawOnChartArea": false
+                }
+            },
+            "sentimentScale": {
+                "type": "linear",
+                "display": "true",
+                "position": "right",
+                "min": 0,
+                "max": 100,
+                "ticks": {
+                    "minRotation": 0
+                },
+                "title": {
+                    "display": true,
+                    "text": "Sentiment Score"
+                },
+                "grid": {
+                    "drawOnChartArea": true
+                }
+            },
+            "volume": {
+                "type": "linear",
+                "display": false,
+                "min": 0,
+                "max": 121603000,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "tweets": {
+                "type": "linear",
+                "reverse": true,
+                "display": false,
+                "min": 0,
+                "max": 1000,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "non-trading-day": {
+                "type": "linear",
+                "display": false,
+                "min": 0,
+                "max": 1,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            },
+            "OgSpamFree": {
+                "type": "linear",
+                "position": "left",
+                "display": false,
+                "min": 0,
+                "max": 100,
+                "grid": {
+                    "drawOnChartArea": false,
+                    "tickMarkLength": 0
+                },
+                "ticks": {
+                    "display": false
+                }
+            }
+        }
+    }
+}

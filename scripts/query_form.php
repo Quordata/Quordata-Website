@@ -21,12 +21,7 @@ $value = urlencode($value);
 
 sleep($sleep_val);
 
-if (in_array($value, $queries)) {
-	header("location: http://quordata.com/Beta_$value");
-	exit();
-} else {
-	header("location: http://quordata.com/search_results.php?q=$value");
-	exit();
-}
+header("location: http://quordata.com/search_results.php?q=$value");
+exit();
 
 ?>
