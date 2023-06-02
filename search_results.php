@@ -586,7 +586,6 @@
                             };
                             const url = `https://apxhx30s83.execute-api.us-west-1.amazonaws.com/prod/google_trends_resource?topic=${userQuery}`;
                             const container = document.getElementById('related-topics-container');
-							
                             let graph = new graphology.Graph();
                             // Add center node
                             graph.addNode(userQuery, {
@@ -732,8 +731,6 @@
             height: ${d.y1 - d.y0}px;
             background-color: ${backgroundColor};
             overflow: hidden;
-			cursor: pointer;
-			border: 1px solid transparent;
           `;
                                 });
                                 treemapSquares.append("img").attr("src", (d) => images[d.data.index]).style("max-width", "100%").style("max-height", "100%").style("object-fit", "contain").style("position", "absolute").style("top", "50%").style("left", "50%").style("transform", "translate(-50%, -50%)");
@@ -752,14 +749,7 @@
                     color: #fff;
     word-wrap: break-word; /* Enable word wrapping */
                 `).text((d) => `${labels[d.data.index]}\n${data[d.data.index]}%`);
-				
-				treemapSquares
-  .on('mouseenter', function() {
-    d3.select(this).style('border', '1px solid black');
-  })
-  .on('mouseleave', function() {
-    d3.select(this).style('border', '1px solid transparent');
-  }).on('click', function(d) {
+                                treemapSquares.on('click', function(d) {
                                   var source = 'toggle_news';
                                   var square = d3.select(this);
                                   var source_label = square.select('.source_label'); // Select the inner div element with the class 'source_label'

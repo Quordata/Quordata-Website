@@ -5,9 +5,9 @@
 if (isset($_GET['userID'])) {
     // Replace the placeholders with your actual database credentials
     $host = 'localhost';
-    $dbname = 'saddlnts_quordata';
-    $username = 'saddlnts';
-    $dbpassword = 'o*#nD*eLA2QoJ!N8VajE';
+	$dbname = 'saddlnts_quordata';
+	$username = 'saddlnts_bcollin';
+	$dbpassword = 'r^isHk6xFL4G2pEoZb9k';
 
     // Establish the database connection using PDO
     try {

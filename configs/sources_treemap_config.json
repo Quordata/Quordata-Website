@@ -1,0 +1,16 @@
+{
+  "colors": {
+    "Twitter": "#94c7cb",
+    "Yahoo Finance": "#cdbcfc",
+    "Reddit": "#ff8f66",
+    "Motley Fool": "#f1babc",
+    "Other": "#ccc"
+  },
+  "images": {
+    "Twitter": "images/twitter_logo.png",
+    "Yahoo Finance": "images/yahoofinance_logo.png",
+    "Reddit": "images/reddit_logo.png",
+    "Motley Fool": "images/motley_logo.webp",
+    "Other": "images/news_logo.png"
+  }
+}

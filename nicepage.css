@@ -42243,7 +42243,7 @@ a.u-link.u-text-hover-grey-90:hover {
 
   .u-header .u-group-elements-1 {
     width: 534px;
-    margin-top: 20px;
+    margin-top: -82px;
   }
 
   .u-header .u-text-2 {
@@ -42275,10 +42275,6 @@ a.u-link.u-text-hover-grey-90:hover {
 @media (max-width: 767px) {
   .u-header .u-image-1 {
     height: 107px;
-  }
-
-  .u-header .u-group-elements-1 {
-    margin-top: -82px;
   }
 
   .u-header .u-custom-html-1 {
