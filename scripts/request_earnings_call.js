@@ -42,4 +42,4 @@ function fetchData() {
 }
 
 // Call the fetchData function when the page finishes loading
-window.onload = fetchData;
+window.addEventListener('load', fetchData);

@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title id="query_title">Query</title>
+    <title>Beta_Amazon</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Beta_Amazon.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.10.3, nicepage.com">
+    <meta name="generator" content="Nicepage 5.10.10, nicepage.com">
     <meta name="referrer" content="origin">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -30,12 +30,12 @@
       {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "name": "Beta_LIVE Apr 15",
+        "name": "Beta",
         "logo": "images/QuordataOrange.png"
       }
     </script>
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="meta_title_property">
+    <meta property="og:title" content="Beta_Amazon">
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
     <meta data-intl-tel-input-cdn-path="intlTelInput/">
@@ -221,10 +221,12 @@
 																											
 																											
 																											
+																											
 																											<b>${pos_sent}</b>`;
               var confidence_scores = document.getElementsByClassName("confidence_score");
               var confidence_score = confidence_scores[0];
               confidence_score.innerHTML = `
+																											
 																											
 																											
 																											
@@ -237,10 +239,12 @@
 																											
 																											
 																											
+																											
 																											<b>${tweets_analyzed}</b>`;
               var average_scores = document.getElementsByClassName("average_score");
               var average_score = average_scores[0];
               average_score.innerHTML = `
+																											
 																											
 																											
 																											
@@ -253,6 +257,7 @@
 																											
 																											
 																											
+																											
 																											<b>SENTIMENT OVER TIME (${time_range})</b>`;
               var insight_summarys = document.getElementsByClassName("insight_summary");
               var insight_summary = insight_summarys[0];
@@ -260,6 +265,7 @@
               var insight_predictions = document.getElementsByClassName("insight_prediction");
               var insight_prediction = insight_predictions[0];
               insight_prediction.innerHTML = `
+																											
 																											
 																											
 																											
@@ -339,9 +345,6 @@
           </script>
         </div>
         <img class="u-image u-image-round u-preserve-proportions u-radius-21 u-image-1" src="
-																										
-																										
-																										
 																										<?php echo $image_url; ?>" alt="" data-image-width="1500" data-image-height="844">
         <div class="u-clearfix u-custom-html u-custom-html-3">
           <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-6" value="1">
@@ -407,26 +410,14 @@
               var positive_scores = document.getElementsByClassName("positive_score");
               var positive_score = positive_scores[0];
               positive_score.innerHTML = `
-																											
-																											
-																												
-																												
 																												<b>${pos_sent}</b>`;
               var confidence_scores = document.getElementsByClassName("confidence_score");
               var confidence_score = confidence_scores[0];
               confidence_score.innerHTML = `
-																											
-																											
-																												
-																												
 																												<b>${conf_score}</b>`;
               var average_scores = document.getElementsByClassName("average_score");
               var average_score = average_scores[0];
               average_score.innerHTML = `
-																											
-																											
-																												
-																												
 																												<b>${ave_score}</b>`;
             }
           </script>
@@ -472,9 +463,6 @@
                       <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-2">
                         <div class="u-container-layout u-container-layout-4">
                           <p class="u-text u-text-body-color u-text-default u-text-4"> Quordata believes the biggest driver of this <span style="font-weight: 700;">positive </span>sentiment comes from <span style="font-weight: 700;">news <?php echo $headline; ?> </span> &nbsp;( <a href="
-																																							
-																																							
-																																							
 																																							<?php echo $article_url; ?>" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" target="_blank">Link </a>). </p>
                         </div>
                       </div>
@@ -866,6 +854,83 @@
               videoOverlay.style.display = 'flex';
             });
           </script>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-grey-10 u-section-3" id="sec-f941">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-custom-color-5 u-layout-cell u-size-6 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1"></div>
+              </div>
+              <div class="u-container-style u-layout-cell u-size-54 u-white u-layout-cell-2">
+                <div class="u-border-2 u-border-grey-75 u-container-layout u-container-layout-2">
+                  <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+                    <script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/3180_RC01/embed_loader.js"></script>
+                    <script type="text/javascript">
+                      var queryName = getQueryNameFromURL();
+                      trends.embed.renderExploreWidget("TIMESERIES", {
+                        "comparisonItem": [{
+                          "keyword": queryName,
+                          "geo": "",
+                          "time": "today 12-m"
+                        }],
+                        "category": 0,
+                        "property": ""
+                      }, {
+                        "exploreQuery": "q=" + queryName + "&date=today 12-m",
+                        "guestPath": "https://trends.google.com:443/trends/embed/"
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-grey-10 u-section-4" id="sec-904f">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-custom-color-5 u-layout-cell u-size-6 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1"></div>
+              </div>
+              <div class="u-align-center u-container-style u-layout-cell u-size-54 u-white u-layout-cell-2">
+                <div class="u-border-2 u-border-grey-75 u-container-layout u-valign-top u-container-layout-2">
+                  <h1 class="u-text u-text-custom-color-5 u-text-default u-title u-text-1">EARNINGS TRANSCRIPT</h1>
+                  <div class="u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-1">
+                    <div class="u-container-layout u-container-layout-3">
+                      <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+                        <p id="transcriptSummary"></p>
+                        <p id="transcriptSentiment"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-clearfix u-custom-html u-custom-html-2">
+                    <button id="toggleTranscriptDisplay" onclick="toggleTranscript()" style="cursor: pointer;"></button>
+                    <script src="scripts/request_earnings_call.js"></script>
+                    <div id="transcriptText" style="display: none;"></div>
+                    <script>
+                      // Function to toggle the transcript display
+                      function toggleTranscript() {
+                        var transcriptDiv = document.getElementById("transcriptText");
+                        if (transcriptDiv.style.display === "none") {
+                          transcriptDiv.style.display = "block";
+                        } else {
+                          transcriptDiv.style.display = "none";
+                        }
+                      }
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
