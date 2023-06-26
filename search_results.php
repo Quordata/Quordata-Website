@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>Beta_Amazon</title>
+    <title id="query_title">Query</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="Beta_Amazon.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -35,7 +35,7 @@
       }
     </script>
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="Beta_Amazon">
+    <meta property="og:title" content="meta_title_property">
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
     <meta data-intl-tel-input-cdn-path="intlTelInput/">
@@ -46,8 +46,8 @@
       // Set the content of the meta tag using the query parameter
       var queryTitle = document.getElementById("query_title");
       queryTitle.content = query;
-      var queryTitleProperty = document.getElementById("meta_title_property");
-      queryTitle.content = query;
+    var queryTitleProperty = document.querySelector('meta[property="og:title"]');
+    queryTitleProperty.content = query;
     </script>
   </head>
   <body class="u-body u-xl-mode" data-lang="en">
@@ -184,36 +184,65 @@
                 pos_sent = "-7%";
                 tweets_analyzed = "28";
                 conf_score = "91%";
-                ave_score = "70%";
+                ave_score = "70";
                 time_range = "9/29-9/30"
               } else if (timeframe == "Week") {
                 pos_sent = "-2%";
                 tweets_analyzed = "173";
                 conf_score = "83%";
-                ave_score = "80%";
+                ave_score = "80";
                 time_range = "9/23-9/30"
               } else if (timeframe == "Month") {
                 pos_sent = "+5%";
                 tweets_analyzed = "867";
                 conf_score = "81%";
-                ave_score = "80%";
+                ave_score = "80";
                 time_range = "9/1-9/30"
               } else if (timeframe == "Year") {
                 pos_sent = "+11%";
                 tweets_analyzed = "9,814";
                 conf_score = "84%";
-                ave_score = "71%";
+                ave_score = "71";
                 time_range = "9/30/21-9/30/22"
               } else {
                 pos_sent = "+11%";
                 tweets_analyzed = "9,814";
                 conf_score = "84%";
-                ave_score = "71%";
+                ave_score = "71";
                 time_range = timeframe
               }
               var happening_summarys = document.getElementsByClassName("happening_summary");
-              var happening_summary = happening_summarys[0];
-              happening_summary.innerHTML = ' < span style = "font-weight: 700;" > ' + ' < ? php echo $query; ? > ' + ' < /span>&nbsp;has been experiencing  < span style = "font-weight: 700;" > positive < /span>sentiment the past  < span style = "font-weight: 700;" > ' + timeframe.toLowerCase() + ' < /span> with an average sentiment score of  < span style = "font-weight: 700;" > ' + ave_score + ' < /span>< span style = "font-weight: 700;" >< /span>';
+				var happening_summary = happening_summarys[0];
+				var span1 = document.createElement("span");
+				span1.style.fontWeight = "700";
+				span1.textContent = query;
+
+				var span2 = document.createElement("span");
+				span2.style.fontWeight = "700";
+				span2.textContent = "positive";
+
+				var span3 = document.createElement("span");
+				span3.style.fontWeight = "700";
+				span3.textContent = timeframe.toLowerCase();
+
+				var span4 = document.createElement("span");
+				span4.style.fontWeight = "700";
+				span4.textContent = ave_score;
+
+				var span5 = document.createElement("span");
+				span5.style.fontWeight = "700";
+				span5.textContent = "%";
+
+				happening_summary.innerHTML = "";
+				happening_summary.appendChild(span1);
+				happening_summary.innerHTML += "&nbsp;has been experiencing ";
+				happening_summary.appendChild(span2);
+				happening_summary.innerHTML += " sentiment the past ";
+				happening_summary.appendChild(span3);
+				happening_summary.innerHTML += " with an average sentiment score of ";
+				happening_summary.appendChild(span4);
+				happening_summary.appendChild(span5);
+
               var positive_scores = document.getElementsByClassName("positive_score");
               var positive_score = positive_scores[0];
               positive_score.innerHTML = `
@@ -259,9 +288,28 @@
 																											
 																											
 																											<b>SENTIMENT OVER TIME (${time_range})</b>`;
-              var insight_summarys = document.getElementsByClassName("insight_summary");
-              var insight_summary = insight_summarys[0];
-              insight_summary.innerHTML = 'Quordata notes  < span style = "font-weight: 700;" > ' + ' < ? php echo $query; ? > ' + ' < /span>stock has been trading in a  < span style = "font-weight: 700;" > negative < /span>trend the  < span style = "font-weight: 700;" > previous ' + timeframe.toLowerCase() + ' < /span>.';
+				var insight_summarys = document.getElementsByClassName("insight_summary");
+				var insight_summary = insight_summarys[0];
+				var span1 = document.createElement("span");
+				span1.style.fontWeight = "700";
+				span1.textContent = query;
+
+				var span2 = document.createElement("span");
+				span2.style.fontWeight = "700";
+				span2.textContent = "negative";
+
+				var span3 = document.createElement("span");
+				span3.style.fontWeight = "700";
+				span3.textContent = "previous " + timeframe.toLowerCase();
+
+				insight_summary.innerHTML = "Quordata notes ";
+				insight_summary.appendChild(span1);
+				insight_summary.innerHTML += " stock has been trading in a ";
+				insight_summary.appendChild(span2);
+				insight_summary.innerHTML += " trend the ";
+				insight_summary.appendChild(span3);
+				insight_summary.innerHTML += ".";
+
               var insight_predictions = document.getElementsByClassName("insight_prediction");
               var insight_prediction = insight_predictions[0];
               insight_prediction.innerHTML = `
@@ -561,109 +609,135 @@
                       <div class="u-clearfix u-custom-html u-custom-html-2">
                         <div id="related-topics-container" style="height: 350px; width: 520px; position: absolute; background-color: transparent; z-index: 9999;"></div>
                         <script>
-                          document.addEventListener('DOMContentLoaded', function() {
-                            // Retrieve the query parameter from the URL using JavaScript
-                            var urlParams = new URLSearchParams(window.location.search);
-                            var userQuery = urlParams.get('q');
-                            var myHeaders = new Headers();
-                            myHeaders.append("Content-Type", "application/json");
-                            var requestOptions = {
-                              method: 'POST',
-                              headers: myHeaders,
-                              redirect: 'follow'
-                            };
-                            const url = `https://apxhx30s83.execute-api.us-west-1.amazonaws.com/prod/google_trends_resource?topic=${userQuery}`;
-                            const container = document.getElementById('related-topics-container');
-                            let graph = new graphology.Graph();
-                            // Add center node
-                            graph.addNode(userQuery, {
-                              label: userQuery,
-                              size: 10,
-                              color: '#ec5148',
-                              x: 0,
-                              y: 0
-                            });
-                            const settings = {
-                              minNodeSize: 5,
-                              maxNodeSize: 20,
-                              minEdgeSize: 1,
-                              maxEdgeSize: 5,
-                              defaultNodeColor: '#ee9e1c',
-                              edgeColor: 'default',
-                              defaultEdgeColor: '#ccc'
-                            };
-                            fetch(url, requestOptions).then(response => {
-                              if (!response.ok) {
-                                throw new Error('Failed to get related topics');
-                              }
-                              return response.json();
-                            }).then(result => {
-                              if (result.length > 6) {
-                                result = result.slice(0, 6);
-                              }
-                              let relatedTopics = [...new Set(result)];
-                              // Remove userQuery from relatedTopics
-                              relatedTopics = relatedTopics.filter(topic => topic !== userQuery);
-                              // Add related topics as nodes and edges to center node
-                              relatedTopics.forEach(function(topic, index) {
-                                var angle = (index / relatedTopics.length) * 2 * Math.PI;
-                                var x = 150 * Math.cos(angle);
-                                var y = 150 * Math.sin(angle);
-                                graph.addNode(topic, {
-                                  label: topic,
-                                  size: 10,
-                                  color: '#777',
-                                  x: x,
-                                  y: y
-                                });
-                                graph.addEdgeWithKey('edge' + (index + 1), userQuery, topic, {
-                                  color: '#ccc'
-                                });
-                              });
-                              graph.nodes().forEach(node => {
-                                graph.mergeNodeAttributes(node, {
-                                  label: node,
-                                  size: 15,
-                                  color: '#ee9e1c'
-                                });
-                              });
-                              const renderer = new Sigma.WebGLRenderer(graph, container, settings);
-                              const camera = renderer.getCamera();
-                              const captor = renderer.getMouseCaptor();
-                              // State
-                              let draggedNode = null,
-                                dragging = false;
-                              renderer.on('downNode', e => {
-                                dragging = true;
-                                draggedNode = e.node;
-                                camera.disable();
-                              });
-                              captor.on('mouseup', e => {
-                                dragging = false;
-                                draggedNode = null;
-                                camera.enable();
-                              });
-                              captor.on('mousemove', e => {
-                                if (!dragging) return;
-                                // Get new position of node
-                                const pos = renderer.normalizationFunction.inverse(camera.viewportToGraph(renderer, e.x, e.y));
-                                graph.setNodeAttribute(draggedNode, 'x', pos.x);
-                                graph.setNodeAttribute(draggedNode, 'y', pos.y);
-                              });
-                              renderer.on('clickNode', e => {
-                                const node = e.node;
-                                const nodeLabel = graph.getNodeAttribute(node, 'label');
-                                if (nodeLabel !== userQuery) {
-                                  const url = 'http://quordata.com/search_results.php?q=' + nodeLabel;
-                                  window.open(url, '_blank');
-                                }
-                              });
-                              window.graph = graph;
-                              window.renderer = renderer;
-                              window.camera = renderer.getCamera();
-                            })
-                          });
-                        </script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve the query parameter from the URL using JavaScript
+    var urlParams = new URLSearchParams(window.location.search);
+    var userQuery = urlParams.get('q');
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    const url = `https://apxhx30s83.execute-api.us-west-1.amazonaws.com/prod/google_trends_resource?topic=${userQuery}`;
+    const container = document.getElementById('related-topics-container');
+    let graph = new graphology.Graph();
+    // Add center node
+    graph.addNode(userQuery, {
+      label: userQuery,
+      size: 10,
+      color: '#ec5148',
+      x: 0,
+      y: 0
+    });
+    const settings = {
+      minNodeSize: 5,
+      maxNodeSize: 20,
+      minEdgeSize: 1,
+      maxEdgeSize: 5,
+      defaultNodeColor: '#ee9e1c',
+      edgeColor: 'default',
+      defaultEdgeColor: '#ccc'
+    };
+    fetch(url, requestOptions).then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to get related topics');
+      }
+      return response.json();
+    }).then(result => {
+      if (result.length > 6) {
+        result = result.slice(0, 6);
+      }
+      let relatedTopics = [...new Set(result)];
+      // Remove userQuery from relatedTopics
+      relatedTopics = relatedTopics.filter(topic => topic !== userQuery);
+      // Make AJAX request to store topics in MySQL
+      const storeTopicsURL = 'scripts/get_closely_related_topics.php';
+      // Define the data to be sent in the request body
+      const requestBody = {
+        userQuery: userQuery,
+        topics: relatedTopics
+      };
+      const storeTopicsRequestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(requestBody),
+        redirect: 'follow'
+      };
+      // Make the AJAX request to store topics in MySQL
+      fetch(storeTopicsURL, storeTopicsRequestOptions).then(response => {
+        if (!response.ok) {
+          // Use the current relatedTopics array if storing failed
+          return relatedTopics;
+        }
+        return response.json();
+      }).then(result => {
+        // Retrieve the stored topics from the response (if needed)
+        let relatedTopics = [...new Set(result)];
+        // Add related topics as nodes and edges to center node
+        relatedTopics.forEach(function(topic, index) {
+          var angle = (index / relatedTopics.length) * 2 * Math.PI;
+          var x = 150 * Math.cos(angle);
+          var y = 150 * Math.sin(angle);
+          graph.addNode(topic, {
+            label: topic,
+            size: 10,
+            color: '#777',
+            x: x,
+            y: y
+          });
+          graph.addEdgeWithKey('edge' + (index + 1), userQuery, topic, {
+            color: '#ccc'
+          });
+        });
+        graph.nodes().forEach(node => {
+          graph.mergeNodeAttributes(node, {
+            label: node,
+            size: 15,
+            color: '#ee9e1c'
+          });
+        });
+        const renderer = new Sigma.WebGLRenderer(graph, container, settings);
+        const camera = renderer.getCamera();
+        const captor = renderer.getMouseCaptor();
+        // State
+        let draggedNode = null,
+          dragging = false;
+        renderer.on('downNode', e => {
+          dragging = true;
+          draggedNode = e.node;
+          camera.disable();
+        });
+        captor.on('mouseup', e => {
+          dragging = false;
+          draggedNode = null;
+          camera.enable();
+        });
+        captor.on('mousemove', e => {
+          if (!dragging) return;
+          // Get new position of node
+          const pos = renderer.normalizationFunction.inverse(camera.viewportToGraph(renderer, e.x, e.y));
+          graph.setNodeAttribute(draggedNode, 'x', pos.x);
+          graph.setNodeAttribute(draggedNode, 'y', pos.y);
+        });
+        renderer.on('clickNode', e => {
+          const node = e.node;
+          const nodeLabel = graph.getNodeAttribute(node, 'label');
+          if (nodeLabel !== userQuery) {
+            const url = 'http://quordata.com/search_results.php?q=' + nodeLabel;
+            window.open(url, '_blank');
+          }
+        });
+        window.graph = graph;
+        window.renderer = renderer;
+        window.camera = renderer.getCamera();
+      })
+    }).catch(error => {
+      console.error('Error storing related topics:', error);
+    });
+  });
+</script>
                       </div>
                     </div>
                   </div>
