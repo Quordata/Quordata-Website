@@ -1,9 +1,7 @@
 <?php
 // Get the values of the URL parameters
-//$q = $_GET['q']; // query name
-$q = "Amazon"; // query name
-//$t = isset($_GET['t']) ? $_GET['t'] : null; // ticker (optional)
-$t = "AMZN";
+$q = $_GET['q']; // query name
+$t = isset($_GET['t']) ? $_GET['t'] : null; // ticker (optional)
 
 // Connect to the database (assuming you have a MySQL connection)
 $host = 'localhost';
@@ -33,7 +31,6 @@ try {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($result) {
-        //$company_id = $result["company_id"];
 		$company_id = $result["company_id"];
 
         // Retrieve the latest transcript for the company
@@ -69,14 +66,16 @@ try {
             echo json_encode($response);
         } else {
             $response = array(
-				'error' => true
+				'error' => true,
+				'query' => $q
 			);
 			header('Content-Type: application/json');
 			echo json_encode($response);
         }
     } else {
 		$response = array(
-			'error' => true
+			'error' => true,
+			'query' => $q
 		);
 		header('Content-Type: application/json');
 		echo json_encode($response);

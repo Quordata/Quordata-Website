@@ -1,6 +1,13 @@
 // Function to make an AJAX request to the PHP script
 function fetchData() {
   var xmlhttp = new XMLHttpRequest();
+  var urlParams = new URLSearchParams(window.location.search);
+
+  // Retrieve the 'q' parameter value
+  var query = urlParams.get('q');
+
+  // Retrieve the 't' parameter value, if it exists
+  var ticker = urlParams.has('t') ? urlParams.get('t') : null;
 
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -34,9 +41,14 @@ function fetchData() {
       }
     }
   };
+  // Specify the URL of the PHP script and include the 'q' parameter
+	var url = "scripts/get_latest_earnings_transcripts.php?q=" + encodeURIComponent(query);
 
-  // Specify the URL of the PHP script
-  var url = "scripts/get_latest_earnings_transcripts.php";
+	// Check if the 't' parameter exists and add it to the URL if it does
+	if (ticker) {
+	  url += "&t=" + encodeURIComponent(ticker);
+	}
+	
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }

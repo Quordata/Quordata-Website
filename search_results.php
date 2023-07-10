@@ -54,7 +54,11 @@
     <header class="u-clearfix u-custom-color-5 u-header u-valign-middle u-header" id="sec-1f2c"> <?php
   // Retrieve the query parameter from the URL
   $query = $_GET['q'];
-  $encquery = urlencode($query);
+  
+  // Remove characters after the first whitespace
+  $modifiedUserQuery = trim(strstr($query, ' ', true));
+  
+  $encquery = urlencode($modifiedUserQuery);
   
   // Define the Google Custom Search API endpoint and parameters
   $cse_image_id = '91150f2633e924c3f';
@@ -183,31 +187,31 @@
               if (timeframe == "Day") {
                 pos_sent = "-7%";
                 tweets_analyzed = "28";
-                conf_score = "91%";
+                conf_score = "91";
                 ave_score = "70";
                 time_range = "9/29-9/30"
               } else if (timeframe == "Week") {
                 pos_sent = "-2%";
                 tweets_analyzed = "173";
-                conf_score = "83%";
+                conf_score = "83";
                 ave_score = "80";
                 time_range = "9/23-9/30"
               } else if (timeframe == "Month") {
                 pos_sent = "+5%";
                 tweets_analyzed = "867";
-                conf_score = "81%";
+                conf_score = "81";
                 ave_score = "80";
                 time_range = "9/1-9/30"
               } else if (timeframe == "Year") {
                 pos_sent = "+11%";
                 tweets_analyzed = "9,814";
-                conf_score = "84%";
+                conf_score = "84";
                 ave_score = "71";
                 time_range = "9/30/21-9/30/22"
               } else {
                 pos_sent = "+11%";
                 tweets_analyzed = "9,814";
-                conf_score = "84%";
+                conf_score = "84";
                 ave_score = "71";
                 time_range = timeframe
               }
@@ -392,8 +396,7 @@
             }
           </script>
         </div>
-        <img class="u-image u-image-round u-preserve-proportions u-radius-21 u-image-1" src="
-																										<?php echo $image_url; ?>" alt="" data-image-width="1500" data-image-height="844">
+        <img class="u-image u-image-round u-preserve-proportions u-radius-21 u-image-1" src="<?php echo $image_url; ?>" alt="" data-image-width="1500" data-image-height="844">
         <div class="u-clearfix u-custom-html u-custom-html-3">
           <button type="submit" onclick="toggle_source(this.id)" id="toggle_twitter" class="u-border-none u-btn u-btn-1 u-btn-round u-palette-3-base u-radius-50 u-btn-6" value="1">
             <p style="margin-top: -7px;">
@@ -545,8 +548,8 @@
                           <span class="u-file-icon u-icon u-icon-6">
                             <img src="images/456115.png" alt="">
                           </span>
-                          <p class="confidence_score u-align-left u-text u-text-body-color u-text-10">81%</p>
-                          <p class="u-align-left u-text u-text-body-color u-text-11">Confident in Sentiment Score</p>
+                          <p class="confidence_score u-align-left u-text u-text-body-color u-text-10">81</p>
+                          <p class="u-align-left u-text u-text-body-color u-text-11">Correlation Score</p>
                         </div>
                       </div>
                       <div class="u-align-left u-container-style u-group u-palette-1-light-2 u-radius-10 u-shape-round u-group-6">
@@ -620,6 +623,9 @@
       headers: myHeaders,
       redirect: 'follow'
     };
+	
+	// Remove characters after the first whitespace
+	userQuery = decodeURIComponent(userQuery).split(' ')[0];
     const url = `https://apxhx30s83.execute-api.us-west-1.amazonaws.com/prod/google_trends_resource?topic=${userQuery}`;
     const container = document.getElementById('related-topics-container');
     let graph = new graphology.Graph();

@@ -36,7 +36,7 @@ try {
   // Check if a matching query_id was found
   if (!$row) {
     http_response_code(404);
-    echo json_encode(array('message' => 'Query not found'));
+    echo json_encode(array('message' => 'Query not found', 'query' => $userQuery));
     exit();
   }
 

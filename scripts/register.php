@@ -1,5 +1,15 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+include 'PHPMailer/src/PHPMailer.php';
+include 'PHPMailer/src/SMTP.php';
+include 'PHPMailer/src/Exception.php';
+
 $errors = []; // Array to store validation errors
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,9 +75,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$stmt->bindParam(':password', $hashedPassword);
 				$stmt->execute();
 
-				// Redirect to success page
+				// Send email to the user
+/*
+                $mail = new PHPMailer;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 587;
+                $mail->SMTPAuth = true;
+                $mail->Username = getenv['SMTP_USERNAME'];
+                $mail->Password = getenv['SMTP_PASSWORD'];
+                $mail->setFrom('hello@quordata.com', 'Quordata Team');
+                $mail->addAddress($email);
+                $mail->Subject = 'Welcome Aboard! Your Quordata Account Registration is Complete 🚀';
+                $mail->Body = "Congratulations on making your Quordata account! We're excited for you to create your first dashboard. Please reach out to us with any questions you have along the way.\n\nBest,\nQuordata Team";
+
+                if ($mail->send()) {
+                    // Redirect to success page
+                    header("Location: https://quordata.com/SignUp_Success");
+                    exit();
+                } else {
+                    // Handle email sending errors
+                    $errors['email'] = 'Failed to send email.';
+                }*/
 				header("Location: https://quordata.com/SignUp_Success");
-				exit();
+                exit();
 			}
 		} catch (PDOException $e) {
 		  // Handle database connection errors or other errors
