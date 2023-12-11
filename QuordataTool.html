@@ -202,21 +202,93 @@ input[type=submit] {
       font-size: 18px;
     }
   } </style>
+          <style> * {
+  box-sizing: border-box;
+}
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+	width: 100%;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+	
+  input[type="search"] {
+    font-size: 10px;
+  }
+  @media only screen and (min-width: 768px) {
+    input[type="search"] {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    input[type="search"] {
+      font-size: 18px;
+    }
+  } </style>
           <form autocomplete="off" action="scripts/query_form.php" method="post" id="search_form" class="u-border-1 u-border-grey-30 u-radius-30 u-search u-search-1 u-search-left u-white u-search-1">
             <div class="autocomplete">
               <div style="display: grid; grid-template-columns: auto 1fr; grid-template-rows: 1fr;">
                 <button class="u-search-button" type="submit">
                   <span class="u-search-icon u-spacing-10 u-search-icon-1">
-                    <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5dee"></use></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-5dee" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" class="u-svg-content"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path></svg>
+                    <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-43b8"></use></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-43b8" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" class="u-svg-content"><path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"></path></svg>
                   </span>
                 </button>
                 <input class="u-search-input u-search-input-1 u-search-input-1" type="search" id="search_query" name="search" value="" placeholder="Click for suggested queries" required="">
               </div>
             </div>
           </form>
-          <button type="submit" form="search_form" onclick="show()" id="submit_query" class="u-border-none u-btn u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50 u-btn-1" value="Submit"><b>SEARCH</b>
-          </button>
+          <div style="text-align: center;">
+            <button type="submit" form="search_form" onclick="show()" id="submit_query" class="u-block-56db-13 u-border-none u-btn-1 u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-3-base u-radius-50" value="Submit" style="box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4); display: inline-block; width: 180px; height: auto; font-size: 1.125rem; margin-top: 10px; margin-bottom: auto; margin-left: auto; margin-right: auto; padding: 10px 40px;"><b>SEARCH</b>
+            </button>
+          </div>
+          <script> const playButton = document.getElementById('start-tutorial');
+	const videoOverlay = document.getElementById('video-overlay');
+	const videoIframe = document.getElementById('video-iframe');
+	playButton.addEventListener('click', function() {
+		videoOverlay.style.display = 'flex';
+	}); </script>
           <img src="images/loader.gif" id="loader" style="margin: auto; width: 150px; height: 150px; display: none;">
           <div id="load_status" style="margin: auto; text-align: center; font-family: 'Open Sans'; font-size: 25px; color: #1c3e5e; font-weight: bold; display: none;"></div>
           <script> var queries = ["Amazon", "Boeing", "Lowes", "McDonalds", "Nvidia", "Pfizer", "Salesforce", "Starbucks", "Tesla", "Walmart"];
@@ -281,42 +353,27 @@ function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
+  var autocompleteList;
+  var val = "";
+  
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-      /*close any already open lists of autocompleted values*/
-      closeAllLists();
-      if (!val) { return false;}
-      currentFocus = -1;
-      /*create a DIV element that will contain the items (values):*/
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
-      /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
-              b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsByTagName("input")[0].value;
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
-              closeAllLists();
-          });
-          a.appendChild(b);
-        }
-      }
-  });
+	inp.addEventListener("input", function(e) {
+	  val = this.value;
+	  closeAllLists();
+	  if (!val) {
+		return false;
+	  }
+	  // Send AJAX request to PHP script
+	  var xhr = new XMLHttpRequest();
+	  xhr.open("GET", "scripts/search_suggestions.php?input=" + encodeURIComponent(val), true);
+	  xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+		  var response = JSON.parse(xhr.responseText);
+		  displaySuggestions(response);
+		}
+	  };
+	  xhr.send();
+	});
 	/*On click, show full list*/
 	inp.addEventListener("click", function(e) {
       currentFocus = -1;
@@ -377,6 +434,27 @@ function autocomplete(inp, arr) {
       }
   });
 	
+  function displaySuggestions(response) {
+    closeAllLists(); // Close any existing autocomplete lists
+    autocompleteList = document.createElement("div"); // Create the autocomplete list
+    autocompleteList.setAttribute("id", inp.id + "-autocomplete-list");
+    autocompleteList.setAttribute("class", "autocomplete-items");
+    inp.parentNode.appendChild(autocompleteList);
+    // Create and append suggestion items to the autocomplete list
+    for (var i = 0; i < response.length; i++) {
+      var suggestionItem = document.createElement("div");
+      var suggestionValue = response[i].name; // Get the 'name' property of the object
+    var suggestionTicker = response[i].ticker; // Get the 'ticker' property of the object
+    suggestionItem.innerHTML = "<strong>" + suggestionValue + "</strong> (" + suggestionTicker + ")";
+    suggestionItem.innerHTML += "<input type='hidden' value='" + suggestionValue + ":" + suggestionTicker + "'>";
+      suggestionItem.addEventListener("click", function(e) {
+        inp.value = this.getElementsByTagName("input")[0].value;
+        closeAllLists();
+      });
+      autocompleteList.appendChild(suggestionItem);
+    }
+  }
+	
   function addActive(x) {
     /*a function to classify an item as "active":*/
     if (!x) return false;
@@ -393,14 +471,11 @@ function autocomplete(inp, arr) {
       x[i].classList.remove("autocomplete-active");
     }
   }
-  function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-    except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-      x[i].parentNode.removeChild(x[i]);
-    }
+  function closeAllLists() {
+  var autocompleteItems = document.getElementsByClassName("autocomplete-items");
+  for (var i = 0; i < autocompleteItems.length; i++) {
+    var autocompleteItem = autocompleteItems[i];
+      autocompleteItem.parentNode.removeChild(autocompleteItem);
   }
 }
 /*execute a function when someone clicks in the document:*/
